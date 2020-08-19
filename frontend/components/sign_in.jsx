@@ -4,20 +4,25 @@ class SignIn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: false,
+            loadingSignin: false,
+            loadingDemo: false,
             ...this.props.user,
         };
-        this.onSubmitClick = this.onSubmitClick.bind(this);
+        this.onLetsOmakaseClick = this.onLetsOmakaseClick.bind(this);
         this.onSignupClick = this.onSignupClick.bind(this);
+        this.onDemoLoginClick = this.onDemoLoginClick.bind(this);
     }
 
-    onSubmitClick(e) {
-        this.setState({loading: true});
+    onLetsOmakaseClick(e) {
+        this.setState({loadingSignin: true});
         e.preventDefault();
-        this.props.action(this.state).then(() => {
-            this.setState({loading: false});
-            this.props.closeModal();
-        });
+        this.props.action(this.state)
+            .then(() => {
+                this.props.closeModal();
+            })
+            .always(() => {
+                this.setState({loadingSignin: false});
+            });
     }
 
     onSignupClick(e) {
@@ -25,13 +30,28 @@ class SignIn extends React.Component {
         this.props.openModal('sign_up');
     }
 
+    onDemoLoginClick(e) {
+        this.setState({loadingDemo: true});
+        e.preventDefault();
+        this.props.action({
+            email: 'DemoBot@openomakase.com',
+            password: 'bigfatcat'
+        })
+        .then(() => {
+            this.props.closeModal();
+        })
+        .always(() => {
+            this.setState({loadingDemo: false});
+        });
+    }
+
     render() {
         const { formType, errors } = this.props;
-        const { loading } = this.state;
+        const { loadingSignin, loadingDemo } = this.state;
         return (
             <div className="sign-container">
                 {errors != null && errors.length > 0 && <div className="sign-error">{errors.map(error => <p>{error}</p>)}</div>}
-                <form className="sign-form" onSubmit={e => this.onSubmitClick(e)}>
+                <form className="sign-form" onSubmit={e => this.onLetsOmakaseClick(e)}>
                     <input
                         className="sign-input"
                         placeholder="Email *"
@@ -48,8 +68,11 @@ class SignIn extends React.Component {
                         onChange={e => this.setState({password: e.currentTarget.value})}
                         required
                     />
-                    <button className="lets-omakase">
-                        {loading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : `Let's Omakase!`}
+                    <button className="lets-omakase" type="submit">
+                        {loadingSignin ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : `Let's Omakase!`}
+                    </button>
+                    <button className="lets-omakase" onClick={e => this.onDemoLoginClick(e)}>
+                        {loadingDemo ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : `Demo Login`}
                     </button>
                     <br />
                     <span>Don't have an account? <a href="" onClick={e => this.onSignupClick(e)}>Sign up</a></span>

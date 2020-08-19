@@ -7,16 +7,18 @@ class SignUp extends React.Component {
             loading: false,
             ...this.props.user,
         };
-        this.onSubmitClick = this.onSubmitClick.bind(this);
+        this.onLetsOmakaseClick = this.onLetsOmakaseClick.bind(this);
         this.onSigninClick = this.onSigninClick.bind(this);
     }
 
-    onSubmitClick(e) {
+    onLetsOmakaseClick(e) {
         this.setState({loading: true});
         e.preventDefault();
         this.props.action(this.state).then(() => {
-            this.setState({loading: false});
             this.props.closeModal();
+        })
+        .always(() => {
+            this.setState({loading: false});
         });
     }
 
@@ -29,7 +31,7 @@ class SignUp extends React.Component {
         const { firstName, lastName, email, password, loading } = this.state;
         return (
             <div className="sign-container">
-                <form className="sign-form" onSubmit={this.onSubmitClick}>
+                <form className="sign-form" onSubmit={this.onLetsOmakaseClick}>
                     <input
                         className="sign-input"
                         placeholder="First Name *"

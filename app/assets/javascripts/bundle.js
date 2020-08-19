@@ -558,28 +558,30 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = _objectSpread({
-      loading: false
+      loadingSignin: false,
+      loadingDemo: false
     }, _this.props.user);
-    _this.onSubmitClick = _this.onSubmitClick.bind(_assertThisInitialized(_this));
+    _this.onLetsOmakaseClick = _this.onLetsOmakaseClick.bind(_assertThisInitialized(_this));
     _this.onSignupClick = _this.onSignupClick.bind(_assertThisInitialized(_this));
+    _this.onDemoLoginClick = _this.onDemoLoginClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SignIn, [{
-    key: "onSubmitClick",
-    value: function onSubmitClick(e) {
+    key: "onLetsOmakaseClick",
+    value: function onLetsOmakaseClick(e) {
       var _this2 = this;
 
       this.setState({
-        loading: true
+        loadingSignin: true
       });
       e.preventDefault();
       this.props.action(this.state).then(function () {
-        _this2.setState({
-          loading: false
-        });
-
         _this2.props.closeModal();
+      }).always(function () {
+        _this2.setState({
+          loadingSignin: false
+        });
       });
     }
   }, {
@@ -589,14 +591,36 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
       this.props.openModal('sign_up');
     }
   }, {
+    key: "onDemoLoginClick",
+    value: function onDemoLoginClick(e) {
+      var _this3 = this;
+
+      this.setState({
+        loadingDemo: true
+      });
+      e.preventDefault();
+      this.props.action({
+        email: 'DemoBot@openomakase.com',
+        password: 'bigfatcat'
+      }).then(function () {
+        _this3.props.closeModal();
+      }).always(function () {
+        _this3.setState({
+          loadingDemo: false
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var _this$props = this.props,
           formType = _this$props.formType,
           errors = _this$props.errors;
-      var loading = this.state.loading;
+      var _this$state = this.state,
+          loadingSignin = _this$state.loadingSignin,
+          loadingDemo = _this$state.loadingDemo;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sign-container"
       }, errors != null && errors.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -606,7 +630,7 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "sign-form",
         onSubmit: function onSubmit(e) {
-          return _this3.onSubmitClick(e);
+          return _this4.onLetsOmakaseClick(e);
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "sign-input",
@@ -614,7 +638,7 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
         type: "email",
         value: this.state.email,
         onChange: function onChange(e) {
-          return _this3.setState({
+          return _this4.setState({
             email: e.currentTarget.value
           });
         },
@@ -625,19 +649,27 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
         type: "password",
         value: this.state.password,
         onChange: function onChange(e) {
-          return _this3.setState({
+          return _this4.setState({
             password: e.currentTarget.value
           });
         },
         required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "lets-omakase"
-      }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "lets-omakase",
+        type: "submit"
+      }, loadingSignin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "lds-ring"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)) : "Let's Omakase!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Don't have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)) : "Let's Omakase!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "lets-omakase",
+        onClick: function onClick(e) {
+          return _this4.onDemoLoginClick(e);
+        }
+      }, loadingDemo ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "lds-ring"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)) : "Demo Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Don't have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "",
         onClick: function onClick(e) {
-          return _this3.onSignupClick(e);
+          return _this4.onSignupClick(e);
         }
       }, "Sign up"))));
     }
@@ -752,14 +784,14 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
     _this.state = _objectSpread({
       loading: false
     }, _this.props.user);
-    _this.onSubmitClick = _this.onSubmitClick.bind(_assertThisInitialized(_this));
+    _this.onLetsOmakaseClick = _this.onLetsOmakaseClick.bind(_assertThisInitialized(_this));
     _this.onSigninClick = _this.onSigninClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SignUp, [{
-    key: "onSubmitClick",
-    value: function onSubmitClick(e) {
+    key: "onLetsOmakaseClick",
+    value: function onLetsOmakaseClick(e) {
       var _this2 = this;
 
       this.setState({
@@ -767,11 +799,11 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       });
       e.preventDefault();
       this.props.action(this.state).then(function () {
+        _this2.props.closeModal();
+      }).always(function () {
         _this2.setState({
           loading: false
         });
-
-        _this2.props.closeModal();
       });
     }
   }, {
@@ -795,7 +827,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         className: "sign-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "sign-form",
-        onSubmit: this.onSubmitClick
+        onSubmit: this.onLetsOmakaseClick
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "sign-input",
         placeholder: "First Name *",
