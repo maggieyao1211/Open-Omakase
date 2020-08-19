@@ -1,0 +1,10 @@
+html {
+    background-color: whitesmoke;
+}
+
+.page-container {
+    background-color: white;
+    border-radius: 10px;
+    margin: auto;
+    width: 2400px;
+}
