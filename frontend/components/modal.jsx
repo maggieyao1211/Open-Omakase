@@ -33,7 +33,6 @@ class Modal extends React.Component {
                     <div className="modal-header">
                         <h3 className="sign-header-text">{modelHeaderText}</h3>
                         <button className="close-button" onClick={this.props.closeModal}>&times;</button>
-                        <hr />
                     </div>
                     {modalContent}
                 </div>
