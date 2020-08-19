@@ -3,17 +3,30 @@ import React from 'react';
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.user;
+        this.state = {
+            loading: false,
+            ...this.props.user,
+        };
         this.onSubmitClick = this.onSubmitClick.bind(this);
+        this.onSigninClick = this.onSigninClick.bind(this);
     }
 
     onSubmitClick(e) {
+        this.setState({loading: true});
         e.preventDefault();
-        this.props.action(this.state).then(() => this.props.closeModal());
+        this.props.action(this.state).then(() => {
+            this.setState({loading: false});
+            this.props.closeModal();
+        });
+    }
+
+    onSigninClick(e) {
+        e.preventDefault();
+        this.props.openModal('sign_in');
     }
 
     render() {
-        const { firstName, lastName, email, password } = this.state;
+        const { firstName, lastName, email, password, loading } = this.state;
         return (
             <div className="sign-container">
                 <form className="sign-form" onSubmit={this.onSubmitClick}>
@@ -51,7 +64,11 @@ class SignUp extends React.Component {
                         onChange={e => this.setState({password: e.currentTarget.value})}
                         required
                     />
-                    <button className="lets-omakase">Let's Omakase!</button>
+                    <button className="lets-omakase">
+                        {loading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : `Let's Omakase!`}
+                    </button>
+                    <br />
+                    <span>Already have an account? <a href="" onClick={e => this.onSigninClick(e)}>Log in</a></span>
                 </form>
             </div>
         );

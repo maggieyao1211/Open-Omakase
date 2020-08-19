@@ -3,20 +3,34 @@ import React from 'react';
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.user;
+        this.state = {
+            loading: false,
+            ...this.props.user,
+        };
         this.onSubmitClick = this.onSubmitClick.bind(this);
+        this.onSignupClick = this.onSignupClick.bind(this);
     }
 
     onSubmitClick(e) {
+        this.setState({loading: true});
         e.preventDefault();
-        this.props.action(this.state).then(() => this.props.closeModal());
+        this.props.action(this.state).then(() => {
+            this.setState({loading: false});
+            this.props.closeModal();
+        });
+    }
+
+    onSignupClick(e) {
+        e.preventDefault();
+        this.props.openModal('sign_up');
     }
 
     render() {
         const { formType, errors } = this.props;
+        const { loading } = this.state;
         return (
             <div className="sign-container">
-                {errors != null && errors.length > 0 && <div>{errors.map(error => <h4>{error}</h4>)}</div>}
+                {errors != null && errors.length > 0 && <div className="sign-error">{errors.map(error => <p>{error}</p>)}</div>}
                 <form className="sign-form" onSubmit={e => this.onSubmitClick(e)}>
                     <input
                         className="sign-input"
@@ -34,7 +48,11 @@ class SignIn extends React.Component {
                         onChange={e => this.setState({password: e.currentTarget.value})}
                         required
                     />
-                    <button className="lets-omakase">Let's Omakase!</button>
+                    <button className="lets-omakase">
+                        {loading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : `Let's Omakase!`}
+                    </button>
+                    <br />
+                    <span>Don't have an account? <a href="" onClick={e => this.onSignupClick(e)}>Sign up</a></span>
                 </form>
             </div>
         );

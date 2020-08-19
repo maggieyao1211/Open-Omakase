@@ -16,7 +16,7 @@ class Modal extends React.Component {
         switch (modal) {
             case 'sign_in':
                 modalContent = <SignInContainer />;
-                modelHeaderText = 'Sign in';
+                modelHeaderText = 'Log in';
                 break;
             case 'sign_up':
                 modalContent = <SignUpContainer />;

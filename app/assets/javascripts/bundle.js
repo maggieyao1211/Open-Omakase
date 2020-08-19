@@ -404,7 +404,7 @@ var Modal = /*#__PURE__*/function (_React$Component) {
       switch (modal) {
         case 'sign_in':
           modalContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sign_in_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
-          modelHeaderText = 'Sign in';
+          modelHeaderText = 'Log in';
           break;
 
         case 'sign_up':
@@ -429,7 +429,7 @@ var Modal = /*#__PURE__*/function (_React$Component) {
       }, modelHeaderText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "close-button",
         onClick: this.props.closeModal
-      }, "\xD7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)), modalContent));
+      }, "\xD7")), modalContent));
     }
   }]);
 
@@ -518,6 +518,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -551,8 +557,11 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, SignIn);
 
     _this = _super.call(this, props);
-    _this.state = _this.props.user;
+    _this.state = _objectSpread({
+      loading: false
+    }, _this.props.user);
     _this.onSubmitClick = _this.onSubmitClick.bind(_assertThisInitialized(_this));
+    _this.onSignupClick = _this.onSignupClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -561,10 +570,23 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
     value: function onSubmitClick(e) {
       var _this2 = this;
 
+      this.setState({
+        loading: true
+      });
       e.preventDefault();
       this.props.action(this.state).then(function () {
-        return _this2.props.closeModal();
+        _this2.setState({
+          loading: false
+        });
+
+        _this2.props.closeModal();
       });
+    }
+  }, {
+    key: "onSignupClick",
+    value: function onSignupClick(e) {
+      e.preventDefault();
+      this.props.openModal('sign_up');
     }
   }, {
     key: "render",
@@ -574,10 +596,13 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           formType = _this$props.formType,
           errors = _this$props.errors;
+      var loading = this.state.loading;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sign-container"
-      }, errors != null && errors.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors.map(function (error) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, error);
+      }, errors != null && errors.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sign-error"
+      }, errors.map(function (error) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, error);
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "sign-form",
         onSubmit: function onSubmit(e) {
@@ -607,7 +632,14 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
         required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "lets-omakase"
-      }, "Let's Omakase!")));
+      }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "lds-ring"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)) : "Let's Omakase!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Don't have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "",
+        onClick: function onClick(e) {
+          return _this3.onSignupClick(e);
+        }
+      }, "Sign up"))));
     }
   }]);
 
@@ -654,6 +686,9 @@ var mdtp = function mdtp(dispatch) {
     },
     closeModal: function closeModal(modal) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])(modal));
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
     }
   };
 };
@@ -674,6 +709,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -708,8 +749,11 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, SignUp);
 
     _this = _super.call(this, props);
-    _this.state = _this.props.user;
+    _this.state = _objectSpread({
+      loading: false
+    }, _this.props.user);
     _this.onSubmitClick = _this.onSubmitClick.bind(_assertThisInitialized(_this));
+    _this.onSigninClick = _this.onSigninClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -718,10 +762,23 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
     value: function onSubmitClick(e) {
       var _this2 = this;
 
+      this.setState({
+        loading: true
+      });
       e.preventDefault();
       this.props.action(this.state).then(function () {
-        return _this2.props.closeModal();
+        _this2.setState({
+          loading: false
+        });
+
+        _this2.props.closeModal();
       });
+    }
+  }, {
+    key: "onSigninClick",
+    value: function onSigninClick(e) {
+      e.preventDefault();
+      this.props.openModal('sign_in');
     }
   }, {
     key: "render",
@@ -732,7 +789,8 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
           firstName = _this$state.firstName,
           lastName = _this$state.lastName,
           email = _this$state.email,
-          password = _this$state.password;
+          password = _this$state.password,
+          loading = _this$state.loading;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sign-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -786,7 +844,14 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "lets-omakase"
-      }, "Let's Omakase!")));
+      }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "lds-ring"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)) : "Let's Omakase!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "",
+        onClick: function onClick(e) {
+          return _this3.onSigninClick(e);
+        }
+      }, "Log in"))));
     }
   }]);
 
@@ -837,6 +902,9 @@ var mdtp = function mdtp(dispatch) {
     },
     closeModal: function closeModal(modal) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])(modal));
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
     }
   };
 };
@@ -1006,6 +1074,8 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 var _noErrors = [];
 
@@ -1016,6 +1086,7 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
       return _noErrors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER_ERRORS"]:

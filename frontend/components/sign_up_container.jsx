@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SignUp from './sign_up';
 import { signUp } from '../actions/session_actions';
-import { closeModal } from '../actions/modal_actions';
+import { closeModal, openModal } from '../actions/modal_actions';
 
 const mstp = ({}) => {
     return {
@@ -18,6 +18,7 @@ const mdtp = (dispatch) => {
     return {
         action: user => dispatch(signUp(user)),
         closeModal: modal => dispatch(closeModal(modal)),
+        openModal: modal => dispatch(openModal(modal)),
     };
 };
 
