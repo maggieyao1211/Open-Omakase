@@ -6,3 +6,42 @@
     position: relative;
     width: 100%;
 }
+
+.greeting-menu-container {
+    position: relative;
+    display: inline-block;
+    padding: 12px;
+    list-style: none;
+}
+
+.greeting-menu-dropdown {
+    display: none;
+    position: absolute;
+    color: #666;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+    margin: 2px;
+    border-radius: 3px;
+    width: 160px;
+    line-height: 40px;
+    z-index: 1;
+}
+
+.greeting-menu-row {
+    text-align: center;
+    cursor: pointer;
+}
+
+.greeting-menu-container:hover .greeting-menu-dropdown {
+    display: block;
+}
+
+.greeting-menu-dropdown .greeting-menu-row {
+    display: block;
+}
+
+.greeting-menu-dropdown .greeting-menu-row:hover {
+    color: #237b98;
+    background: #eef4fb;
+    border-left: 3px solid #237b98;
+}

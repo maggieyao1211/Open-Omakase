@@ -17,6 +17,7 @@ class Api::SessionsController < ApplicationController
     end
 
     def destroy
+        sleep(1);
         sign_out!
         render json: {}
     end
