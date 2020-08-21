@@ -44,7 +44,21 @@
     margin-bottom: 8px;
 }
 
-.lets-omakase:hover {
+.search-lets-omakase {
+  border: none;
+  box-sizing: border-box;
+  padding: 10px 10px;
+  background-color: #DA3743;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  border-radius: 6px;
+  transition: background-color 300ms ease-out;
+  margin-left: 16px;
+  width: 120px;
+}
+
+.lets-omakase:hover, .search-lets-omakase:hover {
     background-color: #b8222d;
 }
 

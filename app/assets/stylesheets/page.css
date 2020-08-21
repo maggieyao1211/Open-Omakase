@@ -4,7 +4,39 @@ html {
 
 .page-container {
     background-color: white;
-    border-radius: 10px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     margin: auto;
     width: 1400px;
+}
+
+.page-footer {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #2d333f;
+    width: 1400px;
+    margin: auto;
+    color: white;
+    height: 36px;
+    position: relative;
+}
+
+.page-footer-text {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.page-footer-github {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.page-footer a {
+    text-decoration: inherit;
+    color: inherit;
 }

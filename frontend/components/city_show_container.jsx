@@ -1,0 +1,17 @@
+import { connect } from 'react-redux';
+import CityShow from './city_show';
+import { fetchCity } from '../actions/city_actions';
+
+const mapStateToProps = ({entities}, ownProps) => {
+    return {
+        city: entities.cities[ownProps.match.params.cityId],
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchCity: cityId => dispatch(fetchCity(cityId)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CityShow);

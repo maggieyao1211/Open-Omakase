@@ -1,14 +1,35 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import GreetingContainer from './greeting_container';
 import ModalContainer from './modal_container';
+import HomePage from './home_page';
+import CityShowContainer from './city_show_container';
+import RestaurantIndexContainer from './restaurant_index_container';
+import RestaurantShowContainer from './restaurant_show_container';
+import UserShowContainer from './user_show_container';
+import { FaGithub } from 'react-icons/fa';
 
 const App = () => (
-    <div className="page-container">
-        <header>
-            <GreetingContainer />
-        </header>
-        <footer>
-        </footer>
+    <div>
+        <div className="page-container">
+            <header>
+                <GreetingContainer />
+            </header>
+            <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/cities/:cityId" component={CityShowContainer} />
+                <Route exact path="/restaurants/" component={RestaurantIndexContainer} />
+                <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer} />
+                <Route exact path="/users/" component={UserShowContainer} />
+                <Route exact path="/users/:userId" component={UserShowContainer} />
+            </Switch>
+        </div>
+            <footer className="page-footer">
+                <span className="page-footer-text">inspired by OpenTable</span>
+                <a href="https://github.com/maggieyao1211" target="_blank">
+                    <FaGithub className="page-footer-github" />
+                </a>
+            </footer>
         <ModalContainer />
     </div>
 );

@@ -1,6 +1,6 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { FaAngleDown } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 class Greeting extends React.Component {
     constructor(props) {
@@ -32,15 +32,15 @@ class Greeting extends React.Component {
         const { loadingLogout } = this.state;
         return (
             <div className="greeting-container">
-                <h2>OpenOmakase</h2>
+                <h2 className="greeting-container-title">OpenOmakase</h2>
                 {currentUser != null ? (
                     <div className="greeting-menu-container">
                         <span>{`Hi, ${currentUser.first_name} `}</span>
-                        <FontAwesomeIcon icon={faAngleDown} />
+                        <FaAngleDown />
                         <div className="greeting-menu-dropdown">
-                            <div className="greeting-menu-row">My Reservations</div>
+                            <Link to="/users" className="greeting-link"><div className="greeting-menu-row">My Reservations</div></Link>
                             <div className="greeting-menu-row" onClick={this.onSignOutClick}>
-                            {loadingLogout ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : `Log out`}
+                            {loadingLogout ? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> : `Log out`}
                             </div>
                         </div>
                     </div>

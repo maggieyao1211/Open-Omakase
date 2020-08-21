@@ -7,11 +7,16 @@
     width: 100%;
 }
 
+.greeting-container-title {
+    padding-left: 20px;
+}
+
 .greeting-menu-container {
     position: relative;
     display: inline-block;
     padding: 12px;
     list-style: none;
+    margin-right: 16px;
 }
 
 .greeting-menu-dropdown {
@@ -21,15 +26,21 @@
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.1);
     margin: 2px;
-    border-radius: 3px;
+    border-radius: 6px;
     width: 160px;
     line-height: 40px;
     z-index: 1;
+    left: -34px;
 }
 
 .greeting-menu-row {
     text-align: center;
     cursor: pointer;
+}
+
+.greeting-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .greeting-menu-container:hover .greeting-menu-dropdown {
