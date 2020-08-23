@@ -58,7 +58,23 @@
   width: 120px;
 }
 
-.lets-omakase:hover, .search-lets-omakase:hover {
+.restaurant-reserve {
+  border: none;
+  box-sizing: border-box;
+  padding: 8px 8px;
+  background-color: #DA3743;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  border-radius: 3px;
+  transition: background-color 300ms ease-out;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  width: 80px;
+  cursor: pointer;
+}
+
+.lets-omakase:hover, .search-lets-omakase:hover, .restaurant-reserve:hover {
     background-color: #b8222d;
 }
 

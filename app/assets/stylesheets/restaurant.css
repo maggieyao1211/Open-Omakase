@@ -1,0 +1,102 @@
+.restaurant-index-container {
+    width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.restaurant-filters-container {
+    width: 300px;
+    flex-direction: column;
+    margin-right: 32px;
+    min-height: 230px;
+}
+
+.restaurant-filters-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.restaurant-filters-text {
+    margin-left: 8px;
+}
+
+.restaurant-filters-price {
+    display: flex;
+    margin-bottom: 32px;
+}
+
+.restaurant-filters-price div {
+    padding: 6px;
+    width: 33.33%;
+    border-top: 1px solid #d8d9db;
+    border-bottom: 1px solid #d8d9db;
+    border-right: 1px solid #d8d9db;
+    text-align: center;
+    cursor: pointer;
+}
+
+.restaurant-filters-price div:first-child {
+    border-left: 1px solid #d8d9db;
+}
+
+.restaurant-filters-price div:hover {
+    color: white;
+    background-color: #2d333f;
+    transition: background-color 300ms ease-out;
+}
+
+.restaurant-filters-price-selected {
+    color: white;
+    background-color: #2d333f;
+}
+
+.restaurant-filters-rating {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.restaurant-filters-rating input {
+    margin-right: 8px;
+}
+
+.restaurant-item-container {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.restaurant-item-img {
+    object-fit:cover;
+    filter: brightness(75%);
+    opacity: 0.9;
+    height: 204px;
+    width: 204px;
+}
+
+.restaurant-item-details {
+    margin-left: 16px;
+}
+
+.restaurant-item-name {
+    color: #237b98;
+    margin-bottom: 4px;
+}
+
+.restaurant-item-price-address {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2d333f;
+}
+
+.restaurant-item-reserve-buttons {
+    display: flex;
+}
+
+.restaurant-no-results {
+    color: #2d333f;
+    padding: 56px;
+}

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import CityShow from './city_show';
 import { fetchCity } from '../actions/city_actions';
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = ({entities}, ownProps) => {
     return {
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CityShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CityShow));

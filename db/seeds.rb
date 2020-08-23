@@ -27,3 +27,14 @@ Restaurant.create!(
     average_rating: 4.5,
     city_id: 1,
 )
+
+Restaurant.create!(
+    name: 'Tempura Endo', 
+    website_url: nil, 
+    address: '234 St, Los Angeles, CA', 
+    zip_code: '90005',
+    phone_number: '123-333-3456',
+    price_level: 4,
+    average_rating: 4.75,
+    city_id: 1,
+)

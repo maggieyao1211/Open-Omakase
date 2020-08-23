@@ -1,0 +1,23 @@
+.city-background {
+    position: relative;
+    min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.city-background img {
+    object-fit:cover;
+    filter: brightness(75%);
+    opacity: 0.9;
+    height: 450px;
+}
+
+.city-background-text {
+    color: whitesmoke;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

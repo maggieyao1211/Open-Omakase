@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import RestaurantShow from './restaurant_show';
 import { fetchRestaurant } from '../actions/restaurant_actions';
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = ({entities}, ownProps) => {
     return {
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RestaurantShow));

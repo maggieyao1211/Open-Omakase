@@ -3,8 +3,8 @@ import * as RestaurantApiUtil from '../util/restaurant_api_util';
 export const RECEIVE_RESTAURANTS = 'RECEIVE_RESTAURANTS';
 export const RECEIVE_RESTAURANT = 'RECEIVE_RESTAURANT';
 
-export const fetchRestaurants = () => dispatch => {
-    return RestaurantApiUtil.fetchRestaurants()
+export const fetchRestaurants = filters => dispatch => {
+    return RestaurantApiUtil.fetchRestaurants(filters)
         .then(restaurants => dispatch({ type: RECEIVE_RESTAURANTS, restaurants }));
 };
 

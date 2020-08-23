@@ -159,9 +159,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_RESTAURANTS = 'RECEIVE_RESTAURANTS';
 var RECEIVE_RESTAURANT = 'RECEIVE_RESTAURANT';
-var fetchRestaurants = function fetchRestaurants() {
+var fetchRestaurants = function fetchRestaurants(filters) {
   return function (dispatch) {
-    return _util_restaurant_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchRestaurants"]().then(function (restaurants) {
+    return _util_restaurant_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchRestaurants"](filters).then(function (restaurants) {
       return dispatch({
         type: RECEIVE_RESTAURANTS,
         restaurants: restaurants
@@ -294,7 +294,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _city_show_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./city_show_container */ "./frontend/components/city_show_container.jsx");
 /* harmony import */ var _restaurant_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./restaurant_index_container */ "./frontend/components/restaurant_index_container.jsx");
 /* harmony import */ var _restaurant_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./restaurant_show_container */ "./frontend/components/restaurant_show_container.jsx");
-/* harmony import */ var _user_show_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./user_show_container */ "./frontend/components/user_show_container.jsx");
+/* harmony import */ var _user_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user_show_container */ "./frontend/components/user_show_container.jsx");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
 
 
@@ -329,11 +329,11 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/users/",
-    component: _user_show_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _user_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/users/:userId",
-    component: _user_show_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _user_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
     className: "page-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -362,6 +362,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _restaurant_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./restaurant_index_container */ "./frontend/components/restaurant_index_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -387,6 +388,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var CityShow = /*#__PURE__*/function (_React$Component) {
   _inherits(CityShow, _React$Component);
 
@@ -407,17 +409,52 @@ var CityShow = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       if (!this.props.city) return null;
-      var city = this.props.city;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, city.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, city.state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/"
-      }, "Back"));
+      var _this$props = this.props,
+          city = _this$props.city,
+          match = _this$props.match;
+      var backgroundSrc = null;
+
+      switch (city.id) {
+        case 1:
+          backgroundSrc = window.la;
+          break;
+
+        case 2:
+          backgroundSrc = window.sf;
+          break;
+
+        case 3:
+          backgroundSrc = window.mia;
+          break;
+
+        case 4:
+          backgroundSrc = window.nyc;
+          break;
+
+        case 5:
+          backgroundSrc = window.hnl;
+          break;
+
+        default:
+          break;
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "city-background"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: backgroundSrc
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "city-background-text"
+      }, "".concat(city.name, ", ").concat(city.state))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurant_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        cityId: city.id
+      }));
     }
   }]);
 
   return CityShow;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (CityShow);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(CityShow));
 
 /***/ }),
 
@@ -433,6 +470,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _city_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./city_show */ "./frontend/components/city_show.jsx");
 /* harmony import */ var _actions_city_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/city_actions */ "./frontend/actions/city_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -452,7 +491,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_city_show__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_city_show__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
@@ -546,9 +585,12 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
       var loadingLogout = this.state.loadingLogout;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "greeting-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "greeting-container-title-link",
+        to: "/"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "greeting-container-title"
-      }, "OpenOmakase"), currentUser != null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "OpenOmakase")), currentUser != null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "greeting-menu-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Hi, ".concat(currentUser.first_name, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaAngleDown"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "greeting-menu-dropdown"
@@ -709,7 +751,19 @@ var HomePage = /*#__PURE__*/function (_React$Component) {
         value: "1730"
       }, "17 : 30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "1800"
-      }, "18 : 00")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "18 : 00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1830"
+      }, "18 : 30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1900"
+      }, "19 : 00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1930"
+      }, "19 : 30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2000"
+      }, "20 : 00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2030"
+      }, "20 : 30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2100"
+      }, "21 : 00")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/restaurants"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-lets-omakase"
@@ -991,6 +1045,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _restaurant_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./restaurant_index_item */ "./frontend/components/restaurant_index_item.jsx");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
+/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
+/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1017,42 +1074,147 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var RestaurantIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(RestaurantIndex, _React$Component);
 
   var _super = _createSuper(RestaurantIndex);
 
   function RestaurantIndex(props) {
+    var _this;
+
     _classCallCheck(this, RestaurantIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      prices: [],
+      rating: null
+    };
+    _this.onPirceClick = _this.onPirceClick.bind(_assertThisInitialized(_this));
+    _this.onRatingClick = _this.onRatingClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(RestaurantIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchRestaurants();
+      this.props.fetchRestaurants({
+        city_id: this.props.cityId
+      });
+    }
+  }, {
+    key: "onPirceClick",
+    value: function onPirceClick(price) {
+      var newPrices = Object.assign([], this.state.prices);
+
+      if (newPrices.includes(price)) {
+        newPrices = newPrices.filter(function (newPrice) {
+          return newPrice !== price;
+        });
+      } else {
+        newPrices.push(price);
+      }
+
+      this.setState({
+        prices: newPrices
+      });
+    }
+  }, {
+    key: "onRatingClick",
+    value: function onRatingClick(e) {
+      this.setState({
+        rating: Number(e.currentTarget.value)
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       if (!this.props.restaurants) return null;
       var restaurants = this.props.restaurants;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, restaurants.map(function (restaurant) {
+      var _this$state = this.state,
+          prices = _this$state.prices,
+          rating = _this$state.rating;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "page-content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-index-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-filters-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-filters-title"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__["FaStarHalfAlt"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "restaurant-filters-text"
+      }, "Rating")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-filters-rating"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        checked: rating === 5,
+        onChange: this.onRatingClick,
+        value: "5"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        rating: 5,
+        starDimension: "20px",
+        starSpacing: "1px",
+        starRatedColor: "orange"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        checked: rating === 4,
+        onChange: this.onRatingClick,
+        value: "4"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        rating: 4,
+        starDimension: "20px",
+        starSpacing: "1px",
+        starRatedColor: "orange"
+      }), " & up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        checked: rating === 3,
+        onChange: this.onRatingClick,
+        value: "3"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        rating: 3,
+        starDimension: "20px",
+        starSpacing: "1px",
+        starRatedColor: "orange"
+      }), " & up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-filters-title"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__["FaMoneyBillAlt"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "restaurant-filters-text"
+      }, "Price")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-filters-price"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: prices.includes(3) ? "restaurant-filters-price-selected" : undefined,
+        onClick: function onClick(e) {
+          return _this2.onPirceClick(3);
+        }
+      }, "$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: prices.includes(4) ? "restaurant-filters-price-selected" : undefined,
+        onClick: function onClick(e) {
+          return _this2.onPirceClick(4);
+        }
+      }, "$$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: prices.includes(5) ? "restaurant-filters-price-selected" : undefined,
+        onClick: function onClick(e) {
+          return _this2.onPirceClick(5);
+        }
+      }, "$$$$$"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, restaurants.length > 0 ? restaurants.map(function (restaurant) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurant_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: restaurant.id,
           restaurant: restaurant
         });
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/"
-      }, "Back"));
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "restaurant-no-results"
+      }, "No results, please choose different filters from left"))));
     }
   }]);
 
   return RestaurantIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (RestaurantIndex);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(RestaurantIndex));
 
 /***/ }),
 
@@ -1068,27 +1230,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _restaurant_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./restaurant_index */ "./frontend/components/restaurant_index.jsx");
 /* harmony import */ var _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/restaurant_actions */ "./frontend/actions/restaurant_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
+
+var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var entities = _ref.entities;
-  console.log(Object.values(entities.restaurants));
+  var cityId = null;
+
+  if (ownProps.cityId != null) {
+    cityId = ownProps.cityId;
+  } else if (ownProps.match != null) {
+    cityId = ownProps.match.params.cityId;
+  }
+
   return {
-    restaurants: Object.values(entities.restaurants)
+    restaurants: Object.values(entities.restaurants),
+    cityId: cityId
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchRestaurants: function fetchRestaurants() {
-      return dispatch(Object(_actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_2__["fetchRestaurants"])());
+    fetchRestaurants: function fetchRestaurants(filters) {
+      return dispatch(Object(_actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_2__["fetchRestaurants"])(filters));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_restaurant_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_restaurant_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
@@ -1103,6 +1275,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
+/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util_general_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/general_util */ "./frontend/util/general_util.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1124,6 +1300,9 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
 
 
 
@@ -1142,15 +1321,79 @@ var RestaurantIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var restaurant = this.props.restaurant;
-      console.log(restaurant);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.website_url), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.zip_code), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.phone_number), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.price_level), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.average_rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.city_id));
+      var name = restaurant.name,
+          price_level = restaurant.price_level,
+          address = restaurant.address,
+          zip_code = restaurant.zip_code,
+          average_rating = restaurant.average_rating;
+      var price = null;
+
+      switch (price_level) {
+        case 5:
+          price = '$$$$$';
+          break;
+
+        case 4:
+          price = '$$$$';
+          break;
+
+        case 3:
+          price = '$$$';
+          break;
+
+        default:
+          break;
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-item-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "restaurant-item-img",
+        src: Object(_util_general_util__WEBPACK_IMPORTED_MODULE_2__["getImgSrcByRestaurantId"])(restaurant.id)
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-item-details"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-item-name"
+      }, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        className: "restaurant-item-rating",
+        rating: average_rating,
+        starDimension: "20px",
+        starSpacing: "1px",
+        starRatedColor: "orange"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-item-price-address"
+      }, "".concat(price), " \xB7 ", "".concat(address, " ").concat(zip_code)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-item-reserve-buttons"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "16:30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "17:00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "17:30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "18:00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "18:30")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-item-reserve-buttons"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "19:00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "19:30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "20:00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "20:30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restaurant-reserve"
+      }, "21:00"))));
     }
   }]);
 
   return RestaurantIndexItem;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (RestaurantIndexItem);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(RestaurantIndexItem));
 
 /***/ }),
 
@@ -1237,6 +1480,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _restaurant_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./restaurant_show */ "./frontend/components/restaurant_show.jsx");
 /* harmony import */ var _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/restaurant_actions */ "./frontend/actions/restaurant_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -1256,7 +1501,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_restaurant_show__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_restaurant_show__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
@@ -1811,8 +2056,10 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _user_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_show */ "./frontend/components/user_show.jsx");
-/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _user_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_show */ "./frontend/components/user_show.jsx");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -1835,12 +2082,12 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchUser: function fetchUser(userId) {
-      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_3__["fetchUser"])(userId));
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["fetchUser"])(userId));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_user_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_user_show__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
@@ -2025,7 +2272,7 @@ var restaurantsReducer = function restaurantsReducer() {
 
   switch (action.type) {
     case _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RESTAURANTS"]:
-      return Object.assign({}, oldState, action.restaurants);
+      return action.restaurants;
 
     case _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RESTAURANT"]:
       return Object.assign({}, oldState, _defineProperty({}, action.restaurant.id, action.restaurant));
@@ -2239,6 +2486,31 @@ var fetchCity = function fetchCity(cityId) {
 
 /***/ }),
 
+/***/ "./frontend/util/general_util.js":
+/*!***************************************!*\
+  !*** ./frontend/util/general_util.js ***!
+  \***************************************/
+/*! exports provided: getImgSrcByRestaurantId */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getImgSrcByRestaurantId", function() { return getImgSrcByRestaurantId; });
+var getImgSrcByRestaurantId = function getImgSrcByRestaurantId(restaurantId) {
+  switch (restaurantId) {
+    case 1:
+      return window.yamakase;
+
+    case 2:
+      return window.tempuraendo;
+
+    default:
+      return null;
+  }
+};
+
+/***/ }),
+
 /***/ "./frontend/util/restaurant_api_util.js":
 /*!**********************************************!*\
   !*** ./frontend/util/restaurant_api_util.js ***!
@@ -2250,9 +2522,12 @@ var fetchCity = function fetchCity(cityId) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchRestaurants", function() { return fetchRestaurants; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchRestaurant", function() { return fetchRestaurant; });
-var fetchRestaurants = function fetchRestaurants(restaurantId) {
+var fetchRestaurants = function fetchRestaurants(filters) {
   return $.ajax({
-    url: "/api/restaurants/"
+    url: "/api/restaurants/",
+    data: {
+      filters: filters
+    }
   });
 };
 var fetchRestaurant = function fetchRestaurant(restaurantId) {
@@ -2392,6 +2667,68 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
   return target;
 }
+
+/***/ }),
+
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
 
 /***/ }),
 
@@ -39615,6 +39952,508 @@ if (true) {
 
 //# sourceMappingURL=react-router.js.map
 
+
+/***/ }),
+
+/***/ "./node_modules/react-star-ratings/build/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-star-ratings/build/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _starRatings = __webpack_require__(/*! ./star-ratings */ "./node_modules/react-star-ratings/build/star-ratings.js");
+
+var _starRatings2 = _interopRequireDefault(_starRatings);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// polyfill for ie
+Number.isInteger = Number.isInteger || function (value) {
+  return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
+};
+
+exports.default = _starRatings2.default;
+
+/***/ }),
+
+/***/ "./node_modules/react-star-ratings/build/star-ratings.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-star-ratings/build/star-ratings.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _star = __webpack_require__(/*! ./star */ "./node_modules/react-star-ratings/build/star.js");
+
+var _star2 = _interopRequireDefault(_star);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var StarRatings = function (_React$Component) {
+  _inherits(StarRatings, _React$Component);
+
+  function StarRatings() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, StarRatings);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StarRatings.__proto__ || Object.getPrototypeOf(StarRatings)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      highestStarHovered: -Infinity
+    }, _this.fillId = 'starGrad' + Math.random().toFixed(15).slice(2), _this.hoverOverStar = function (starRating) {
+      return function () {
+        _this.setState({
+          highestStarHovered: starRating
+        });
+      };
+    }, _this.unHoverOverStar = function () {
+      _this.setState({
+        highestStarHovered: -Infinity
+      });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(StarRatings, [{
+    key: 'stopColorStyle',
+    value: function stopColorStyle(color) {
+      var stopColorStyle = {
+        stopColor: color,
+        stopOpacity: '1'
+      };
+      return this.props.ignoreInlineStyles ? {} : stopColorStyle;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          starRatedColor = _props.starRatedColor,
+          starEmptyColor = _props.starEmptyColor;
+
+
+      return _react2.default.createElement(
+        'div',
+        {
+          className: 'star-ratings',
+          title: this.titleText,
+          style: this.starRatingsStyle
+        },
+        _react2.default.createElement(
+          'svg',
+          {
+            className: 'star-grad',
+            style: this.starGradientStyle
+          },
+          _react2.default.createElement(
+            'defs',
+            null,
+            _react2.default.createElement(
+              'linearGradient',
+              { id: this.fillId, x1: '0%', y1: '0%', x2: '100%', y2: '0%' },
+              _react2.default.createElement('stop', { offset: '0%', className: 'stop-color-first', style: this.stopColorStyle(starRatedColor) }),
+              _react2.default.createElement('stop', { offset: this.offsetValue, className: 'stop-color-first', style: this.stopColorStyle(starRatedColor) }),
+              _react2.default.createElement('stop', { offset: this.offsetValue, className: 'stop-color-final', style: this.stopColorStyle(starEmptyColor) }),
+              _react2.default.createElement('stop', { offset: '100%', className: 'stop-color-final', style: this.stopColorStyle(starEmptyColor) })
+            )
+          )
+        ),
+        this.renderStars
+      );
+    }
+  }, {
+    key: 'starRatingsStyle',
+    get: function get() {
+      var starRatingsStyle = {
+        position: 'relative',
+        boxSizing: 'border-box',
+        display: 'inline-block'
+      };
+      return this.props.ignoreInlineStyles ? {} : starRatingsStyle;
+    }
+  }, {
+    key: 'starGradientStyle',
+    get: function get() {
+      var starGradientStyle = {
+        position: 'absolute',
+        zIndex: '0',
+        width: '0',
+        height: '0',
+        visibility: 'hidden'
+      };
+      return this.props.ignoreInlineStyles ? {} : starGradientStyle;
+    }
+  }, {
+    key: 'titleText',
+    get: function get() {
+      var _props2 = this.props,
+          typeOfWidget = _props2.typeOfWidget,
+          selectedRating = _props2.rating;
+
+      var hoveredRating = this.state.highestStarHovered;
+      var currentRating = hoveredRating > 0 ? hoveredRating : selectedRating;
+      // fix it at 2 decimal places and remove trailing 0s
+      var formattedRating = parseFloat(currentRating.toFixed(2)).toString();
+      if (Number.isInteger(currentRating)) {
+        formattedRating = String(currentRating);
+      }
+      var starText = typeOfWidget + 's';
+      if (formattedRating === '1') {
+        starText = typeOfWidget;
+      }
+      return formattedRating + ' ' + starText;
+    }
+  }, {
+    key: 'offsetValue',
+    get: function get() {
+      var rating = this.props.rating;
+      var ratingIsInteger = Number.isInteger(rating);
+      var offsetValue = '0%';
+      if (!ratingIsInteger) {
+        var firstTwoDecimals = rating.toFixed(2).split('.')[1].slice(0, 2);
+        offsetValue = firstTwoDecimals + '%';
+      }
+      return offsetValue;
+    }
+  }, {
+    key: 'renderStars',
+    get: function get() {
+      var _this2 = this;
+
+      var _props3 = this.props,
+          changeRating = _props3.changeRating,
+          selectedRating = _props3.rating,
+          numberOfStars = _props3.numberOfStars,
+          starDimension = _props3.starDimension,
+          starSpacing = _props3.starSpacing,
+          starRatedColor = _props3.starRatedColor,
+          starEmptyColor = _props3.starEmptyColor,
+          starHoverColor = _props3.starHoverColor,
+          gradientPathName = _props3.gradientPathName,
+          ignoreInlineStyles = _props3.ignoreInlineStyles,
+          svgIconPath = _props3.svgIconPath,
+          svgIconViewBox = _props3.svgIconViewBox,
+          name = _props3.name;
+      var highestStarHovered = this.state.highestStarHovered;
+
+
+      var numberOfStarsArray = Array.apply(null, Array(numberOfStars));
+
+      return numberOfStarsArray.map(function (_, index) {
+        var starRating = index + 1;
+        var isStarred = starRating <= selectedRating;
+
+        // hovered only matters when changeRating is true
+        var hoverMode = highestStarHovered > 0;
+        var isHovered = starRating <= highestStarHovered;
+        var isCurrentHoveredStar = starRating === highestStarHovered;
+
+        // only matters when changeRating is false
+        // given star 5 and rating 4.2:  5 > 4.2 && 4 < 4.2;
+        var isPartiallyFullStar = starRating > selectedRating && starRating - 1 < selectedRating;
+
+        var isFirstStar = starRating === 1;
+        var isLastStar = starRating === numberOfStars;
+
+        return _react2.default.createElement(_star2.default, {
+          key: starRating,
+          fillId: _this2.fillId,
+          changeRating: changeRating ? function () {
+            return changeRating(starRating, name);
+          } : null,
+          hoverOverStar: changeRating ? _this2.hoverOverStar(starRating) : null,
+          unHoverOverStar: changeRating ? _this2.unHoverOverStar : null,
+          isStarred: isStarred,
+          isPartiallyFullStar: isPartiallyFullStar,
+          isHovered: isHovered,
+          hoverMode: hoverMode,
+          isCurrentHoveredStar: isCurrentHoveredStar,
+          isFirstStar: isFirstStar,
+          isLastStar: isLastStar,
+          starDimension: starDimension,
+          starSpacing: starSpacing,
+          starHoverColor: starHoverColor,
+          starRatedColor: starRatedColor,
+          starEmptyColor: starEmptyColor,
+          gradientPathName: gradientPathName,
+          ignoreInlineStyles: ignoreInlineStyles,
+          svgIconPath: svgIconPath,
+          svgIconViewBox: svgIconViewBox
+        });
+      });
+    }
+  }]);
+
+  return StarRatings;
+}(_react2.default.Component);
+
+StarRatings.propTypes = {
+  rating: _propTypes2.default.number.isRequired,
+  numberOfStars: _propTypes2.default.number.isRequired,
+  changeRating: _propTypes2.default.func,
+  starHoverColor: _propTypes2.default.string.isRequired,
+  starRatedColor: _propTypes2.default.string.isRequired,
+  starEmptyColor: _propTypes2.default.string.isRequired,
+  starDimension: _propTypes2.default.string.isRequired,
+  starSpacing: _propTypes2.default.string.isRequired,
+  gradientPathName: _propTypes2.default.string.isRequired,
+  ignoreInlineStyles: _propTypes2.default.bool.isRequired,
+  svgIconPath: _propTypes2.default.string.isRequired,
+  svgIconViewBox: _propTypes2.default.string.isRequired,
+  name: _propTypes2.default.string
+};
+
+StarRatings.defaultProps = {
+  rating: 0,
+  typeOfWidget: 'Star',
+  numberOfStars: 5,
+  changeRating: null,
+  starHoverColor: 'rgb(230, 67, 47)',
+  starRatedColor: 'rgb(109, 122, 130)',
+  starEmptyColor: 'rgb(203, 211, 227)',
+  starDimension: '50px',
+  starSpacing: '7px',
+  gradientPathName: '',
+  ignoreInlineStyles: false,
+  svgIconPath: 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z',
+  svgIconViewBox: '0 0 51 48'
+};
+
+exports.default = StarRatings;
+
+/***/ }),
+
+/***/ "./node_modules/react-star-ratings/build/star.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-star-ratings/build/star.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Star = function (_React$Component) {
+  _inherits(Star, _React$Component);
+
+  function Star() {
+    _classCallCheck(this, Star);
+
+    return _possibleConstructorReturn(this, (Star.__proto__ || Object.getPrototypeOf(Star)).apply(this, arguments));
+  }
+
+  _createClass(Star, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          changeRating = _props.changeRating,
+          hoverOverStar = _props.hoverOverStar,
+          unHoverOverStar = _props.unHoverOverStar,
+          svgIconViewBox = _props.svgIconViewBox,
+          svgIconPath = _props.svgIconPath;
+
+      return _react2.default.createElement(
+        'div',
+        {
+          className: 'star-container',
+          style: this.starContainerStyle,
+          onMouseEnter: hoverOverStar,
+          onMouseLeave: unHoverOverStar,
+          onClick: changeRating
+        },
+        _react2.default.createElement(
+          'svg',
+          {
+            viewBox: svgIconViewBox,
+            className: this.starClasses,
+            style: this.starSvgStyle
+          },
+          _react2.default.createElement('path', {
+            className: 'star',
+            style: this.pathStyle,
+            d: svgIconPath
+          })
+        )
+      );
+    }
+  }, {
+    key: 'starContainerStyle',
+    get: function get() {
+      var _props2 = this.props,
+          changeRating = _props2.changeRating,
+          starSpacing = _props2.starSpacing,
+          isFirstStar = _props2.isFirstStar,
+          isLastStar = _props2.isLastStar,
+          ignoreInlineStyles = _props2.ignoreInlineStyles;
+
+
+      var starContainerStyle = {
+        position: 'relative',
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        paddingLeft: isFirstStar ? undefined : starSpacing,
+        paddingRight: isLastStar ? undefined : starSpacing,
+        cursor: changeRating ? 'pointer' : undefined
+      };
+      return ignoreInlineStyles ? {} : starContainerStyle;
+    }
+  }, {
+    key: 'starSvgStyle',
+    get: function get() {
+      var _props3 = this.props,
+          ignoreInlineStyles = _props3.ignoreInlineStyles,
+          isCurrentHoveredStar = _props3.isCurrentHoveredStar,
+          starDimension = _props3.starDimension;
+
+      var starSvgStyle = {
+        width: starDimension,
+        height: starDimension,
+        transition: 'transform .2s ease-in-out',
+        transform: isCurrentHoveredStar ? 'scale(1.1)' : undefined
+      };
+
+      return ignoreInlineStyles ? {} : starSvgStyle;
+    }
+  }, {
+    key: 'pathStyle',
+    get: function get() {
+      var _props4 = this.props,
+          isStarred = _props4.isStarred,
+          isPartiallyFullStar = _props4.isPartiallyFullStar,
+          isHovered = _props4.isHovered,
+          hoverMode = _props4.hoverMode,
+          starEmptyColor = _props4.starEmptyColor,
+          starRatedColor = _props4.starRatedColor,
+          starHoverColor = _props4.starHoverColor,
+          gradientPathName = _props4.gradientPathName,
+          fillId = _props4.fillId,
+          ignoreInlineStyles = _props4.ignoreInlineStyles;
+
+
+      var fill = void 0;
+      if (hoverMode) {
+        if (isHovered) fill = starHoverColor;else fill = starEmptyColor;
+      } else {
+        if (isPartiallyFullStar) fill = 'url(\'' + gradientPathName + '#' + fillId + '\')';else if (isStarred) fill = starRatedColor;else fill = starEmptyColor;
+      }
+
+      var pathStyle = {
+        fill: fill,
+        transition: 'fill .2s ease-in-out'
+      };
+
+      return ignoreInlineStyles ? {} : pathStyle;
+    }
+  }, {
+    key: 'starClasses',
+    get: function get() {
+      var _props5 = this.props,
+          isSelected = _props5.isSelected,
+          isPartiallyFullStar = _props5.isPartiallyFullStar,
+          isHovered = _props5.isHovered,
+          isCurrentHoveredStar = _props5.isCurrentHoveredStar,
+          ignoreInlineStyles = _props5.ignoreInlineStyles;
+
+
+      var starClasses = (0, _classnames2.default)({
+        'widget-svg': true,
+        'widget-selected': isSelected,
+        'multi-widget-selected': isPartiallyFullStar,
+        'hovered': isHovered,
+        'current-hovered': isCurrentHoveredStar
+      });
+
+      return ignoreInlineStyles ? {} : starClasses;
+    }
+  }]);
+
+  return Star;
+}(_react2.default.Component);
+
+Star.propTypes = {
+  fillId: _propTypes2.default.string.isRequired,
+  changeRating: _propTypes2.default.func,
+  hoverOverStar: _propTypes2.default.func,
+  unHoverOverStar: _propTypes2.default.func,
+  isStarred: _propTypes2.default.bool.isRequired,
+  isPartiallyFullStar: _propTypes2.default.bool.isRequired,
+  isHovered: _propTypes2.default.bool.isRequired,
+  hoverMode: _propTypes2.default.bool.isRequired,
+  isCurrentHoveredStar: _propTypes2.default.bool.isRequired,
+  isFirstStar: _propTypes2.default.bool.isRequired,
+  isLastStar: _propTypes2.default.bool.isRequired,
+  starDimension: _propTypes2.default.string.isRequired,
+  starSpacing: _propTypes2.default.string.isRequired,
+  starHoverColor: _propTypes2.default.string.isRequired,
+  starRatedColor: _propTypes2.default.string.isRequired,
+  starEmptyColor: _propTypes2.default.string.isRequired,
+  gradientPathName: _propTypes2.default.string.isRequired,
+  ignoreInlineStyles: _propTypes2.default.bool.isRequired,
+  svgIconPath: _propTypes2.default.string.isRequired,
+  svgIconViewBox: _propTypes2.default.string.isRequired
+};
+
+exports.default = Star;
 
 /***/ }),
 

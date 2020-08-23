@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import UserShow from './user_show';
 import { fetchUser } from '../actions/user_actions';
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = ({entities, session}, ownProps) => {
     let { userId } = ownProps.match.params;
@@ -19,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserShow));

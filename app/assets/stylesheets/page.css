@@ -7,17 +7,23 @@ html {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     margin: auto;
-    width: 1400px;
+    width: 1600px;
+}
+
+.page-content {
+    border-top: 1px solid lightgrey;
+    margin-top: 16px;
+    padding-top: 16px;
 }
 
 .page-footer {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     background-color: #2d333f;
-    width: 1400px;
+    width: 1600px;
     margin: auto;
     color: white;
-    height: 36px;
+    height: 48px;
     position: relative;
 }
 

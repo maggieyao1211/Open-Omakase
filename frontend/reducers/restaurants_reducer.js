@@ -4,7 +4,7 @@ const restaurantsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
     switch (action.type){
         case RECEIVE_RESTAURANTS:
-            return Object.assign({}, oldState, action.restaurants);
+            return action.restaurants;
         case RECEIVE_RESTAURANT:
             return Object.assign({}, oldState, { [action.restaurant.id]: action.restaurant });
         default:

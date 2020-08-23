@@ -1,6 +1,7 @@
-export const fetchRestaurants = restaurantId => {
+export const fetchRestaurants = filters => {
   return $.ajax({
     url: `/api/restaurants/`,
+    data: { filters },
   });
 };
 

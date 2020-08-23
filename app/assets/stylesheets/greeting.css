@@ -11,6 +11,11 @@
     padding-left: 20px;
 }
 
+.greeting-container-title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .greeting-menu-container {
     position: relative;
     display: inline-block;

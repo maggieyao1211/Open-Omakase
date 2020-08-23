@@ -31,6 +31,12 @@ class HomePage extends React.Component {
                 <option value="1700">17 : 00</option>
                 <option value="1730">17 : 30</option>
                 <option value="1800">18 : 00</option>
+                <option value="1830">18 : 30</option>
+                <option value="1900">19 : 00</option>
+                <option value="1930">19 : 30</option>
+                <option value="2000">20 : 00</option>
+                <option value="2030">20 : 30</option>
+                <option value="2100">21 : 00</option>
             </select>
             <Link to="/restaurants"><button className="search-lets-omakase">Let's Omakase</button></Link>
           </div>
