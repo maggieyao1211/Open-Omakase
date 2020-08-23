@@ -823,7 +823,7 @@ var HomePage = /*#__PURE__*/function (_React$Component) {
         src: window.sf
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "home-section-text"
-      }, "San Fracisco"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "San Francisco"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home-section"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "cities/3"
@@ -2496,17 +2496,16 @@ var fetchCity = function fetchCity(cityId) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getImgSrcByRestaurantId", function() { return getImgSrcByRestaurantId; });
+var restaurantIdToImgSrcMap = {
+  1: window.yamakase,
+  2: window.tempuraendo,
+  3: window.kusakabe,
+  4: window.hashiri,
+  5: window.maruyama,
+  6: window.sushisho
+};
 var getImgSrcByRestaurantId = function getImgSrcByRestaurantId(restaurantId) {
-  switch (restaurantId) {
-    case 1:
-      return window.yamakase;
-
-    case 2:
-      return window.tempuraendo;
-
-    default:
-      return null;
-  }
+  return restaurantIdToImgSrcMap[restaurantId];
 };
 
 /***/ }),

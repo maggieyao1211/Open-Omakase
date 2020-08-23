@@ -76,7 +76,7 @@ class HomePage extends React.Component {
             <div className="home-section">
                 <Link to={`cities/2`}>
                     <img src={window.sf} />
-                    <h3 className="home-section-text">San Fracisco</h3>
+                    <h3 className="home-section-text">San Francisco</h3>
                 </Link>
             </div>
             <div className="home-section">

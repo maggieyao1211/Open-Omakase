@@ -12,7 +12,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('cities')
 ActiveRecord::Base.connection.reset_pk_sequence!('restaurants')
 
 City.create!(name: 'Los Angeles', state: 'CA')
-City.create!(name: 'San Fracisco', state: 'CA')
+City.create!(name: 'San Francisco', state: 'CA')
 City.create!(name: 'Miami', state: 'FL')
 City.create!(name: 'New York City', state: 'NY')
 City.create!(name: 'Honolulu', state: 'HI')
@@ -22,7 +22,7 @@ Restaurant.create!(
     website_url: nil, 
     address: '123 St, Los Angeles, CA', 
     zip_code: '90010',
-    phone_number: '123-333-3456',
+    phone_number: '(123) 333-3456',
     price_level: 5,
     average_rating: 4.5,
     city_id: 1,
@@ -33,8 +33,52 @@ Restaurant.create!(
     website_url: nil, 
     address: '234 St, Los Angeles, CA', 
     zip_code: '90005',
-    phone_number: '123-333-3456',
+    phone_number: '(123) 333-3456',
     price_level: 4,
     average_rating: 4.75,
     city_id: 1,
+)
+
+Restaurant.create!(
+    name: 'Kusakabe', 
+    website_url: nil, 
+    address: '456 St, San Francisco, CA', 
+    zip_code: '94045',
+    phone_number: '(123) 333-3456',
+    price_level: 4,
+    average_rating: 4.2,
+    city_id: 2,
+)
+
+Restaurant.create!(
+    name: 'Hashiri', 
+    website_url: nil, 
+    address: '678 St, San Francisco, CA', 
+    zip_code: '94025',
+    phone_number: '(123) 444-3456',
+    price_level: 4,
+    average_rating: 4.6,
+    city_id: 2,
+)
+
+Restaurant.create!(
+    name: 'Maruyama', 
+    website_url: nil, 
+    address: '279 Baldwin Ave, San Mateo, CA', 
+    zip_code: '94401',
+    phone_number: '(650) 315-2945',
+    price_level: 3,
+    average_rating: 4.5,
+    city_id: 2,
+)
+
+Restaurant.create!(
+    name: 'Sushi Sho', 
+    website_url: nil, 
+    address: '10749 San Pablo, El Cerrito, CA', 
+    zip_code: '94530',
+    phone_number: '(510) 525-1800',
+    price_level: 3,
+    average_rating: 3.9,
+    city_id: 2,
 )
