@@ -9,7 +9,6 @@
 City.destroy_all
 Restaurant.destroy_all
 Review.destroy_all
-Restaurant.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('cities')
 ActiveRecord::Base.connection.reset_pk_sequence!('restaurants')
 ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
@@ -23,7 +22,7 @@ City.create!(name: 'Honolulu', state: 'HI')
 Restaurant.create!(
     name: 'Yamakase', 
     description: 'Specializing unique Japanese fusion cuisine, artfully prepared by our Executive Chef Yama. You will enjoy not just a meal but a culinary experience.', 
-    website_url: nil, 
+    website_url: 'https://www.yamakase.com', 
     address: '123 St, Los Angeles, CA', 
     zip_code: '90010',
     phone_number: '(123) 333-3456',

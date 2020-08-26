@@ -68,9 +68,18 @@
     background-color: white;
     z-index: 1000;
     top: -48px;
-    height: 368px;
+    height: 376px;
     margin-left: 48px;
     box-shadow: 0 2px 8px rgba(153,153,153,0.4);
+}
+
+.restaurant-details-below-reservation {
+    position: relative;
+    border-radius: 3px;
+    width: 360px;
+    z-index: 1000;
+    top: -2rem;
+    margin-left: 48px;
 }
 
 .restaurant-show-reservation-header {
@@ -127,6 +136,8 @@
 
 .restaurant-show-subtitle span {
     margin-right: 8px;
+    display: flex;
+    align-items: center;
 }
 
 .restaurant-show-description {

@@ -14,7 +14,7 @@ class Modal extends React.Component {
             return null;
         }
         let modalContent, modelHeaderText;
-        modal = modal.split(" ");
+        modal = modal.split("%-%-%");
         const modal_type = modal[0];
         switch (modal_type) {
             case 'sign_in':

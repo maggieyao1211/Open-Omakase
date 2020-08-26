@@ -31,11 +31,10 @@
 }
 
 .reservation-restaurant-name {
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 500;
     margin-block-start: 0;
-    color: #237b98;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .reservation-details-icson {

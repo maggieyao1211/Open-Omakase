@@ -20,3 +20,7 @@ export const createReview = data => dispatch => {
 export const createReservation = data => dispatch => {
     return RestaurantApiUtil.createReservation(data);
 };
+
+export const cancelReservation = reservationId => dispatch => {
+    return RestaurantApiUtil.cancelReservation(reservationId);
+};

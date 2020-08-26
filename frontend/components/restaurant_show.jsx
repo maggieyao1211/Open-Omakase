@@ -4,6 +4,9 @@ import { getImgSrcByRestaurantId, allTimes, getNearbyTimeslots, getDateStrFormat
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarRatings from "react-star-ratings";
 import { CgComment } from 'react-icons/cg';
+import { RiBuilding4Line } from 'react-icons/ri';
+import { BiLinkExternal } from 'react-icons/bi';
+import { MdCall } from 'react-icons/md';
 
 class RestaurantShow extends React.Component {
     constructor(props) {
@@ -102,7 +105,7 @@ class RestaurantShow extends React.Component {
             e.preventDefault();
             const { reserveDate, partySize } = this.state;
             this.props.openModal(
-                `reserve ${reserveDate} ${timeslot} ${restaurant.name} ${restaurant.id} ${partySize}`
+                `reserve%-%-%${reserveDate}%-%-%${timeslot}%-%-%${restaurant.name}%-%-%${restaurant.id}%-%-%${partySize}`
             );
         };
     }
@@ -197,6 +200,7 @@ class RestaurantShow extends React.Component {
                     }
                     </div>
                 </div>
+                <div className="restaurant-show-right-panel">
                 <div className="restaurant-show-reservation">
                     <div className="restaurant-show-reservation-header">
                         <span>Make a reservation</span>
@@ -226,6 +230,18 @@ class RestaurantShow extends React.Component {
                         </div>
                         <button className="lets-omakase" onClick={this.onFindTableClick}>Fina a table</button>
                     </div>
+                </div>
+                <div className="restaurant-details-below-reservation">
+                    {restaurant.phone_number != null && 
+                        <div className="restaurant-show-subtitle"><MdCall className="reservation-details-icson" />{`${restaurant.phone_number}`}</div>
+                    }
+                    <div className="restaurant-show-subtitle"><RiBuilding4Line className="reservation-details-icson" />{`${restaurant.address}, ${restaurant.zip_code}`}</div>
+                    {restaurant.website_url != null && 
+                        <div className="restaurant-show-subtitle"><BiLinkExternal className="reservation-details-icson" />
+                            <a href={restaurant.website_url} target="_blank">{`${restaurant.website_url}`}</a>
+                        </div>
+                    }
+                </div>
                 </div>
             </div>
         </div>);

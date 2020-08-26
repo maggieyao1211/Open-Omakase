@@ -1,0 +1,55 @@
+.user-show-container {
+    border-top: 1px solid lightgrey;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.user-show-container h1 {
+    width: 1056px;
+    margin: auto;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+    color: #237b98;
+}
+
+.user-show-profile {
+    width: 1024px;
+    border-radius: 6px;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(153,153,153,0.4);
+    background-color: white;
+    padding: 1rem;
+}
+
+.user-show-profile label {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 20px;
+}
+
+.user-show-profile label:last-child {
+    margin-bottom: 0rem;
+}
+
+.user-show-profile span {
+    color: #B5B5B5;
+    font-weight: 700;
+}
+
+.user-show-change-reservation {
+    color: #237b98 !important;
+    cursor: pointer;
+}
+
+.user-show-change-reservation:hover {
+    text-decoration: underline;
+}
+
+.user-show-no-reservation {
+    text-align: center;
+    font-size: 20px;
+}

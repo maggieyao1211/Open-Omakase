@@ -26,3 +26,10 @@ export const createReservation = reservation => {
     data: { reservation },
   });
 };
+
+export const cancelReservation = reservationId => {
+  return $.ajax({
+    url: `/api/reservations/${reservationId}`,
+    method: 'delete',
+  });
+};
