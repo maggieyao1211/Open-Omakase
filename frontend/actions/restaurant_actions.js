@@ -12,3 +12,11 @@ export const fetchRestaurant = restaurantId => dispatch => {
     return RestaurantApiUtil.fetchRestaurant(restaurantId)
         .then(restaurant => dispatch({ type: RECEIVE_RESTAURANT, restaurant }));
 };
+
+export const createReview = data => dispatch => {
+    return RestaurantApiUtil.createReview(data);
+};
+
+export const createReservation = data => dispatch => {
+    return RestaurantApiUtil.createReservation(data);
+};

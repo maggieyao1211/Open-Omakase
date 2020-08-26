@@ -1,0 +1,191 @@
+.restaurant-show-background {
+    position: relative;
+    min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.restaurant-show-background img {
+    object-fit:cover;
+    filter: brightness(75%);
+    opacity: 0.9;
+    height: 450px;
+}
+
+.restaurant-show-background-text {
+    color: whitesmoke;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.restaurant-show-content {
+    width: 1024px;
+    margin: auto;
+    display: flex;
+}
+
+.restaurant-show-info {
+    width: 740px;
+}
+
+.restaurant-show-nav {
+    position: relative;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    display: flex;
+    width: 740px;
+    background-color: white;
+    z-index: 1000;
+    height: 48px;
+    top: -48px;
+}
+
+.restaurant-show-nav-header {
+    font-weight: 600;
+    padding: 16px;
+    width: 50%;
+    border-bottom: 1px solid lightgrey;
+}
+  
+.restaurant-show-nav-header:hover {
+    color: #DA3743;
+    border-bottom: 1px solid #DA3743; 
+}
+
+.restaurant-show-nav a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.restaurant-show-reservation {
+    position: relative;
+    border-radius: 3px;
+    width: 360px;
+    background-color: white;
+    z-index: 1000;
+    top: -48px;
+    height: 368px;
+    margin-left: 48px;
+    box-shadow: 0 2px 8px rgba(153,153,153,0.4);
+}
+
+.restaurant-show-reservation-header {
+    text-align: center;
+    font-weight: 600;
+    padding: 14px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.restaurant-show-reservation-content {
+    padding: 16px;
+}
+
+.restaurant-show-reservation-party-size-text {
+    font-size: .875rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.restaurant-show-reservation-party-size-select {
+    outline: none;
+    border: 1px solid transparent;
+    padding-bottom: 8px;
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.restaurant-show-reservation-party-size-select:hover {
+    border-bottom: 1px solid #DA3743; 
+}
+
+.restaurant-show-details {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.restaurant-show-name {
+    font-size: 48px;
+    font-weight: 700;
+    margin-block-start: 0;
+    color: #237b98;
+    border-bottom: 1px solid #d8d9db;
+    padding-bottom: 1rem;
+    margin: 0 0 1rem;
+    margin-top: 10px;
+}
+
+.restaurant-show-subtitle {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.restaurant-show-subtitle span {
+    margin-right: 8px;
+}
+
+.restaurant-show-description {
+    margin-bottom: 3rem;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.restaurant-show-reviews-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.33;
+    color: #2d333f;
+    border-bottom: 1px solid #d8d9db;
+    padding-bottom: 1rem;
+    margin: 0 0 1rem;
+}
+
+.restaurant-show-review {
+    border-bottom: 1px solid #d8d9db;
+    padding-bottom: 1rem;
+    margin: 0 0 1rem;
+    display: flex;
+}
+
+.restaurant-show-review-content {
+    line-height: 1.5;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #2d333f;
+    margin-top: 1rem;
+}
+
+.leave-reivew-input {
+    font-size: 20px;
+    border-bottom: 1px solid #d8d9db;
+    margin-bottom: 1rem;
+}
+
+.leave-reivew-input-row {
+    display: flex;
+    margin-bottom: .5rem;
+}
+
+.leave-reivew-input-row-name {
+    margin-right: .5rem;
+}
+
+.leave-reivew-input-text-area {
+    border-radius: 6px;
+    width: 690px;
+    height: 100px;
+    padding: 16px;
+    font-size: 16px;
+    margin-bottom: .5rem;
+}
+
+.restaurant-show-reservation-time-slots {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+}

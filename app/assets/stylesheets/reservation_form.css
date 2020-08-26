@@ -1,0 +1,43 @@
+.reservation-form-container {
+    padding: 1rem;
+}
+
+.reservation-details-container {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.reservation-details-container img {
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1rem;
+}
+
+.reservation-details {
+    display: flex;
+}
+
+.reservation-details div {
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.reservation-form-input {
+    margin-bottom: 1rem;
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.reservation-restaurant-name {
+    font-size: 36px;
+    font-weight: 700;
+    margin-block-start: 0;
+    color: #237b98;
+    margin-bottom: 1rem;
+}
+
+.reservation-details-icson {
+    margin-right: .5rem;
+}

@@ -42,6 +42,7 @@
     border-radius: 6px;
     transition: background-color 300ms ease-out;
     margin-bottom: 8px;
+    cursor: pointer;
 }
 
 .search-lets-omakase {
@@ -56,6 +57,62 @@
   transition: background-color 300ms ease-out;
   margin-left: 16px;
   width: 120px;
+}
+
+.leave-reivew-button {
+  border: none;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    width: 180px;
+    background-color: #DA3743;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: background-color 300ms ease-out;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    margin-left: 544px;
+    font-size: 18px;
+}
+
+.submit-button {
+  border: none;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    width: 180px;
+    background-color: #DA3743;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: background-color 300ms ease-out;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    font-size: 16px;
+}
+
+.time-slot-button {
+    border: none;
+    box-sizing: border-box;
+    background-color: #DA3743;
+    padding: .5rem .5rem;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: background-color 300ms ease-out;
+    cursor: pointer;
+}
+
+.cancel-button {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  text-decoration: underline;
 }
 
 .restaurant-reserve {
@@ -74,7 +131,7 @@
   cursor: pointer;
 }
 
-.lets-omakase:hover, .search-lets-omakase:hover, .restaurant-reserve:hover {
+.lets-omakase:hover, .search-lets-omakase:hover, .restaurant-reserve:hover, .leave-reivew-button:hover, .submit-button:hover, time-slot-button:hover {
     background-color: #b8222d;
 }
 

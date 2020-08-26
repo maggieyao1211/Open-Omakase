@@ -52,7 +52,7 @@ class RestaurantIndex extends React.Component {
                             rating={5}
                             starDimension="20px"
                             starSpacing="1px"
-                            starRatedColor="orange"
+                            starRatedColor="red"
                         />
                     </div>
                     <div>
@@ -61,7 +61,7 @@ class RestaurantIndex extends React.Component {
                             rating={4}
                             starDimension="20px"
                             starSpacing="1px"
-                            starRatedColor="orange"
+                            starRatedColor="red"
                         /> & up
                     </div>
                     <div>
@@ -70,7 +70,7 @@ class RestaurantIndex extends React.Component {
                             rating={3}
                             starDimension="20px"
                             starSpacing="1px"
-                            starRatedColor="orange"
+                            starRatedColor="red"
                         /> & up
                     </div>
                 </div>

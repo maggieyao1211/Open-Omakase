@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_210929) do
+ActiveRecord::Schema.define(version: 2020_08_26_050532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 2020_08_21_210929) do
     t.index ["state"], name: "index_cities_on_state"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "restaurant_id", null: false
+    t.string "reserve_date", null: false
+    t.string "reserve_time", null: false
+    t.string "special_notice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "party_size"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
     t.string "website_url"
@@ -35,10 +46,22 @@ ActiveRecord::Schema.define(version: 2020_08_21_210929) do
     t.integer "city_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
     t.index ["average_rating"], name: "index_restaurants_on_average_rating"
     t.index ["city_id"], name: "index_restaurants_on_city_id"
     t.index ["name"], name: "index_restaurants_on_name"
     t.index ["price_level"], name: "index_restaurants_on_price_level"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "restaurant_id", null: false
+    t.string "comment", null: false
+    t.integer "rating", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

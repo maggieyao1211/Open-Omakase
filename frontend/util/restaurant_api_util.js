@@ -10,3 +10,19 @@ export const fetchRestaurant = restaurantId => {
       url: `/api/restaurants/${restaurantId}`,
     });
 };
+
+export const createReview = review => {
+  return $.ajax({
+    url: `/api/reviews/`,
+    method: 'post',
+    data: { review },
+  });
+};
+
+export const createReservation = reservation => {
+  return $.ajax({
+    url: `/api/reservations/`,
+    method: 'post',
+    data: { reservation },
+  });
+};

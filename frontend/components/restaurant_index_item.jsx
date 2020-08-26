@@ -1,7 +1,7 @@
 import React from 'react';
 import StarRatings from "react-star-ratings";
-import { getImgSrcByRestaurantId } from "../util/general_util";
-import { withRouter } from "react-router-dom";
+import { getImgSrcByRestaurantId, allTimes } from "../util/general_util";
+import { Link, withRouter } from "react-router-dom";
 
 class RestaurantIndexItem extends React.Component {
     constructor(props) {
@@ -31,28 +31,24 @@ class RestaurantIndexItem extends React.Component {
         <div className="restaurant-item-container">
             <img className="restaurant-item-img" src={getImgSrcByRestaurantId(restaurant.id)} />
             <div className="restaurant-item-details">
-                <div className="restaurant-item-name">{name}</div>
+                <Link to={`/restaurants/${restaurant.id}`}><div className="restaurant-item-name">{name}</div></Link>
                 <StarRatings
                     className="restaurant-item-rating"
                     rating={average_rating}
                     starDimension="20px"
                     starSpacing="1px"
-                    starRatedColor="orange"
+                    starRatedColor="red"
                 />
                 <div className="restaurant-item-price-address">{`${price}`} &middot; {`${address} ${zip_code}`}</div>
                 <div className="restaurant-item-reserve-buttons">
-                    <button className="restaurant-reserve">16:30</button>
-                    <button className="restaurant-reserve">17:00</button>
-                    <button className="restaurant-reserve">17:30</button>
-                    <button className="restaurant-reserve">18:00</button>
-                    <button className="restaurant-reserve">18:30</button>
+                    {allTimes.slice(0, 5).map(time => <Link to={`/restaurants/${restaurant.id}`} key={time}>
+                        <button className="restaurant-reserve">{time}</button>
+                    </Link>)}
                 </div>
                 <div className="restaurant-item-reserve-buttons">
-                    <button className="restaurant-reserve">19:00</button>
-                    <button className="restaurant-reserve">19:30</button>
-                    <button className="restaurant-reserve">20:00</button>
-                    <button className="restaurant-reserve">20:30</button>
-                    <button className="restaurant-reserve">21:00</button>
+                    {allTimes.slice(5, 10).map(time => <Link to={`/restaurants/${restaurant.id}`} key={time}>
+                        <button className="restaurant-reserve">{time}</button>
+                    </Link>)}
                 </div>
             </div>
         </div>);

@@ -46,3 +46,41 @@ html {
     text-decoration: inherit;
     color: inherit;
 }
+
+.profile-pic-container {
+    width: 20%;
+    margin-right: .5rem;
+}
+
+.profile-pic-container div {
+    margin: auto;
+    text-align: center;
+    margin-bottom: .5rem;
+}
+
+.profile-pic-reviews {
+    color: #6f737b;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-pic {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: lightsalmon;
+    color: white;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.profile-pic-reviews-icon {
+    margin-right: 4px;
+
+}

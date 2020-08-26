@@ -1,0 +1,1 @@
+json.extract! reservation, :id, :user_id, :restaurant_id, :reserve_date, :reserve_time, :party_size, :special_notice

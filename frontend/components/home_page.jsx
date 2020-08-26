@@ -49,20 +49,26 @@ class HomePage extends React.Component {
                 <h3 className="home-section-text">Wabi Sabi By Shuji</h3>
             </div>
             <div className="home-section">
-                <img src={window.tempuraendo} />
-                <h3 className="home-section-text">Tempura Endo</h3>
+                <Link to={`restaurants/2`}>
+                    <img src={window.tempuraendo} />
+                    <h3 className="home-section-text">Tempura Endo</h3>
+                </Link>
             </div>
             <div className="home-section">
                 <img src={window.hiden} />
                 <h3 className="home-section-text">Hiden</h3>
             </div>
             <div className="home-section">
-                <img src={window.hashiri} />
-                <h3 className="home-section-text">Hashiri</h3>
+                <Link to={`restaurants/4`}>
+                    <img src={window.hashiri} />
+                    <h3 className="home-section-text">Hashiri</h3>
+                </Link>
             </div>
             <div className="home-section">
-                <img src={window.sushisho} />
-                <h3 className="home-section-text">Sushi Sho</h3>
+                <Link to={`restaurants/6`}>
+                    <img src={window.sushisho} />
+                    <h3 className="home-section-text">Sushi Sho</h3>
+                </Link>
             </div>
         </div>
         <h3 className="home-section-title">Dreamy desination</h3>
@@ -115,12 +121,16 @@ class HomePage extends React.Component {
                 <h3 className="home-section-text">Masa</h3>
             </div>
             <div className="home-section">
-                <img src={window.maruyama} />
-                <h3 className="home-section-text">Sushi Maruyama</h3>
+                <Link to={`restaurants/5`}>
+                    <img src={window.maruyama} />
+                    <h3 className="home-section-text">Sushi Maruyama</h3>
+                </Link>
             </div>
             <div className="home-section">
-                <img src={window.kusakabe} />
-                <h3 className="home-section-text">Kusakabe</h3>
+                <Link to={`restaurants/3`}>
+                    <img src={window.kusakabe} />
+                    <h3 className="home-section-text">Kusakabe</h3>
+                </Link>
             </div>
         </div>
         </div>

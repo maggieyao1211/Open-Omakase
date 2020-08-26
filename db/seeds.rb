@@ -8,8 +8,11 @@
 
 City.destroy_all
 Restaurant.destroy_all
+Review.destroy_all
+Restaurant.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('cities')
 ActiveRecord::Base.connection.reset_pk_sequence!('restaurants')
+ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
 
 City.create!(name: 'Los Angeles', state: 'CA')
 City.create!(name: 'San Francisco', state: 'CA')
@@ -19,6 +22,7 @@ City.create!(name: 'Honolulu', state: 'HI')
 
 Restaurant.create!(
     name: 'Yamakase', 
+    description: 'Specializing unique Japanese fusion cuisine, artfully prepared by our Executive Chef Yama. You will enjoy not just a meal but a culinary experience.', 
     website_url: nil, 
     address: '123 St, Los Angeles, CA', 
     zip_code: '90010',
@@ -28,8 +32,26 @@ Restaurant.create!(
     city_id: 1,
 )
 
+Review.create!(
+    user_id: 1,
+    restaurant_id: 1,
+    comment: 'Best japanese omakase I ever have, though price is bit expensive, but still worth!',
+    rating: 5,
+)
+
+Review.create!(
+    user_id: 2,
+    restaurant_id: 1,
+    comment: 'Very hard to make a reservation, but food is tasty and fresh!',
+    rating: 4,
+)
+
 Restaurant.create!(
-    name: 'Tempura Endo', 
+    name: 'Tempura Endo',
+    description: 'avor our exquisite Kyoto-style tempura
+        in a most traditional setting from the ancient capital of Japan.
+        The ingredients for our delectable tempura feature the choicest seasonal delicacies.
+        Indulge yourself in exquisite Kyoto-style tempura at Tempura Endo.', 
     website_url: nil, 
     address: '234 St, Los Angeles, CA', 
     zip_code: '90005',
@@ -40,7 +62,8 @@ Restaurant.create!(
 )
 
 Restaurant.create!(
-    name: 'Kusakabe', 
+    name: 'Kusakabe',
+    description: nil,
     website_url: nil, 
     address: '456 St, San Francisco, CA', 
     zip_code: '94045',
@@ -52,6 +75,7 @@ Restaurant.create!(
 
 Restaurant.create!(
     name: 'Hashiri', 
+    description: nil,
     website_url: nil, 
     address: '678 St, San Francisco, CA', 
     zip_code: '94025',
@@ -63,6 +87,7 @@ Restaurant.create!(
 
 Restaurant.create!(
     name: 'Maruyama', 
+    description: nil,
     website_url: nil, 
     address: '279 Baldwin Ave, San Mateo, CA', 
     zip_code: '94401',
@@ -74,6 +99,7 @@ Restaurant.create!(
 
 Restaurant.create!(
     name: 'Sushi Sho', 
+    description: nil,
     website_url: nil, 
     address: '10749 San Pablo, El Cerrito, CA', 
     zip_code: '94530',
