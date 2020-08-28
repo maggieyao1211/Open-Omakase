@@ -32,7 +32,12 @@ class Greeting extends React.Component {
         const { loadingLogout } = this.state;
         return (
             <div className="greeting-container">
-                <Link className="greeting-container-title-link" to="/"><h2 className="greeting-container-title">OpenOmakase</h2></Link>
+                <Link to="/">
+                    <div className="greeting-logo-name">
+                        <img className="greeting-logo" src={window.logo} />
+                        <h2 className="greeting-container-title">OpenOmakase</h2>
+                    </div>
+                </Link>
                 {currentUser != null ? (
                     <div className="greeting-menu-container">
                         <span>{`Hi, ${currentUser.first_name} `}</span>

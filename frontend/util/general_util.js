@@ -5,6 +5,22 @@ const restaurantIdToImgSrcMap = {
     4: window.hashiri,
     5: window.maruyama,
     6: window.sushisho,
+    7: window.kinjo,
+    8: window.onodera,
+    9: window.sushizo,
+    10: window.qsushi,
+    11: window.naoe,
+    12: window.hiden,
+    13: window.azabu,
+    14: window.bou,
+    15: window.wabisabi,
+    16: window.uchu,
+    17: window.satsuki,
+    18: window.masa,
+    19: window.nazakawa,
+    20: window.odo,
+    21: window.maru,
+    22: window.onoderahni,
 };
 
 export const getImgSrcByRestaurantId = restaurantId => restaurantIdToImgSrcMap[restaurantId];

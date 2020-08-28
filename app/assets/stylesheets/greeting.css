@@ -7,8 +7,20 @@
     width: 100%;
 }
 
-.greeting-container-title {
-    padding-left: 20px;
+.greeting-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.greeting-logo-name {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.greeting-logo {
+    width: 52px;
+    height: 52px;
 }
 
 .greeting-container-title-link {
