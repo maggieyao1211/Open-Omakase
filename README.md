@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+OpenOmakase is a full-stack project inspired by Opentable. It's a platform that people can search and make reservation for japanese omakase-type restaurants over many large US cities like LA, SF, NYC, e.t.c. 
 
-Things you may want to cover:
+# Technology
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby on rails
+* React & Redux
+* HTML & CSS
