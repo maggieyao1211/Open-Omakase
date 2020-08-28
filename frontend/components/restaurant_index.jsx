@@ -16,7 +16,23 @@ class RestaurantIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchRestaurants({city_id: this.props.cityId});
+        const { prices, rating } = this.state; 
+        this.props.fetchRestaurants({
+            city_id: this.props.cityId,
+            prices,
+            rating,
+        });
+    }
+
+    componentDidUpdate(_prevProps, prevState, _snapshot) {
+        const { prices, rating } = this.state; 
+        if (prices != prevState.prices || rating != prevState.rating) {
+            this.props.fetchRestaurants({
+                city_id: this.props.cityId,
+                prices,
+                rating,
+            });
+        }
     }
 
     onPirceClick(price) {

@@ -80,7 +80,7 @@ Restaurant.create!(
     zip_code: '94025',
     phone_number: '(123) 444-3456',
     price_level: 4,
-    average_rating: 4.6,
+    average_rating: 5,
     city_id: 2,
 )
 
@@ -92,7 +92,7 @@ Restaurant.create!(
     zip_code: '94401',
     phone_number: '(650) 315-2945',
     price_level: 3,
-    average_rating: 4.5,
+    average_rating: 3.9,
     city_id: 2,
 )
 

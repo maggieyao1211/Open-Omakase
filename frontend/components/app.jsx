@@ -21,7 +21,6 @@ const App = () => (
                 <Route exact path="/restaurants/" component={RestaurantIndexContainer} />
                 <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer} />
                 <Route exact path="/users/" component={UserShowContainer} />
-                <Route exact path="/users/:userId" component={UserShowContainer} />
             </Switch>
         </div>
             <footer className="page-footer">
