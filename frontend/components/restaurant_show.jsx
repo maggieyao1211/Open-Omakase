@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { getImgSrcByRestaurantId, allTimes, getNearbyTimeslots, getDateStrFormat } from '../util/general_util';
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarRatings from "react-star-ratings";
 import { CgComment } from 'react-icons/cg';
 import { RiBuilding4Line } from 'react-icons/ri';
@@ -146,8 +144,9 @@ class RestaurantShow extends React.Component {
                             starDimension="20px"
                             starSpacing="1px"
                             starRatedColor="red"
-                            /> {restaurant.average_rating}
+                            />
                         </span>
+                        <span>{restaurant.average_rating}</span>
                         <span>{price}</span>
                     </div>
                     <div className="restaurant-show-description">{restaurant.description}</div>

@@ -1,12 +1,21 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { getDateStrFormat } from '../util/general_util';
 
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedDate: new Date(),
+            selectedDate: getDateStrFormat(new Date()),
         };
+        this.onDateChange = this.onDateChange.bind(this);
+    }
+
+    onDateChange(e) {
+        e.preventDefault();
+        this.setState({
+            selectedDate: e.currentTarget.value,
+        });
     }
 
     render() {
@@ -25,7 +34,7 @@ class HomePage extends React.Component {
                 <option value={6}>6 people</option>
                 <option value={7}>7 people</option>
             </select>
-            <input type="date" />
+            <input type="date" onChange={this.onDateChange} value={selectedDate} />
             <select>
                 <option value="1630">16 : 30</option>
                 <option value="1700">17 : 00</option>
@@ -45,8 +54,10 @@ class HomePage extends React.Component {
         <h3 className="home-section-title">Starring this week</h3>
         <div className="home-section-content">
             <div className="home-section">
-                <img src={window.wabisabi} />
-                <h3 className="home-section-text">Wabi Sabi By Shuji</h3>
+                <Link to={`restaurants/15`}>
+                    <img src={window.wabisabi} />
+                    <h3 className="home-section-text">Wabi Sabi By Shuji</h3>
+                </Link>
             </div>
             <div className="home-section">
                 <Link to={`restaurants/2`}>
@@ -55,8 +66,10 @@ class HomePage extends React.Component {
                 </Link>
             </div>
             <div className="home-section">
-                <img src={window.hiden} />
-                <h3 className="home-section-text">Hiden</h3>
+                <Link to={`restaurants/12`}>
+                    <img src={window.hiden} />
+                    <h3 className="home-section-text">Hiden</h3>
+                </Link>
             </div>
             <div className="home-section">
                 <Link to={`restaurants/4`}>
@@ -113,12 +126,16 @@ class HomePage extends React.Component {
                 </Link>
             </div>
             <div className="home-section">
-                <img src={window.azabu} />
-                <h3 className="home-section-text">Azabu</h3>
+                <Link to={`restaurants/13`}>
+                    <img src={window.azabu} />
+                    <h3 className="home-section-text">Azabu</h3>
+                </Link>
             </div>
             <div className="home-section">
-                <img src={window.masa} />
-                <h3 className="home-section-text">Masa</h3>
+                <Link to={`restaurants/18`}>
+                    <img src={window.masa} />
+                    <h3 className="home-section-text">Masa</h3>
+                </Link>
             </div>
             <div className="home-section">
                 <Link to={`restaurants/5`}>
