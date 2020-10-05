@@ -16,6 +16,7 @@
     height: 20px;
     width: 20px;
     margin-right: 12px;
+    cursor: pointer;
 }
 
 .sign-up-in:focus {

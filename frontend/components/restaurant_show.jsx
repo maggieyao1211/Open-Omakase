@@ -36,7 +36,11 @@ class RestaurantShow extends React.Component {
     }
 
     onLeaveReviewClick() {
-        this.setState({openReviewInput: true});
+        if (this.props.currentUserId != null) {
+            this.setState({openReviewInput: true});
+        } else {
+            this.props.openModal('sign_in');
+        }
     }
 
     onRatingChange(rating) {
@@ -102,9 +106,13 @@ class RestaurantShow extends React.Component {
         return e => {
             e.preventDefault();
             const { reserveDate, partySize } = this.state;
-            this.props.openModal(
-                `reserve%-%-%${reserveDate}%-%-%${timeslot}%-%-%${restaurant.name}%-%-%${restaurant.id}%-%-%${partySize}`
-            );
+            let modal = null;
+            if (this.props.currentUserId != null) {
+                modal = `reserve%-%-%${reserveDate}%-%-%${timeslot}%-%-%${restaurant.name}%-%-%${restaurant.id}%-%-%${partySize}`;
+            } else {
+                modal = 'sign_in';
+            }
+            this.props.openModal(modal);
         };
     }
 
