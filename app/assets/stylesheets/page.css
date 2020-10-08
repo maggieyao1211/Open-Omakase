@@ -82,5 +82,10 @@ html {
 
 .profile-pic-reviews-icon {
     margin-right: 4px;
+}
 
+.profile-pic-edit {
+    text-decoration: underline;
+    color: #237b98;
+    cursor: pointer;
 }

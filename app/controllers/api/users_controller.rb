@@ -2,7 +2,6 @@ class Api::UsersController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def create
-        sleep(1);
         @user = User.create(user_params)
         if @user.save
             sign_in!(@user)

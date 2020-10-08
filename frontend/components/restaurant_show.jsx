@@ -18,6 +18,7 @@ class RestaurantShow extends React.Component {
             reserveDate: getDateStrFormat(new Date()),
             reserveTime: '16:30',
             nearbyTimeslots: [],
+            editReviewId: null,
         };
         this.onLeaveReviewClick = this.onLeaveReviewClick.bind(this);
         this.onRatingChange = this.onRatingChange.bind(this);
@@ -29,6 +30,8 @@ class RestaurantShow extends React.Component {
         this.onReserveTimeChange = this.onReserveTimeChange.bind(this);
         this.onFindTableClick = this.onFindTableClick.bind(this);
         this.onTimeslotClick = this.onTimeslotClick.bind(this);
+        this.onReivewEditClick = this.onReivewEditClick.bind(this);
+        this.leaveReviewRef = React.createRef()
     }
 
     componentDidMount() {
@@ -54,24 +57,42 @@ class RestaurantShow extends React.Component {
     }
 
     onCancelClick() {
-        this.setState({openReviewInput: false});
+        this.setState({
+            openReviewInput: false,
+            comment: '',
+            rating: 0,
+            editReviewId: null,
+        });
     }
 
     onSubmitClick(e) {
         this.setState({loadingSubmitReview: true});
         e.preventDefault();
-        this.props.createReview({
+        const reivewData = {
             comment: this.state.comment,
             rating: this.state.rating,
             user_id: this.props.currentUserId,
             restaurant_id: this.props.match.params.restaurantId,
-        }).then(() => {
+        };
+        const refetchRestaurantAndResetState = () => {
             this.props.fetchRestaurant(this.props.match.params.restaurantId);
             this.setState({
                 openReviewInput: false,
                 loadingSubmitReview: false,
+                comment: '',
+                rating: 0,
+                editReviewId: null,
             });
-        });
+        };
+        if (this.state.editReviewId != null) {
+            this.props.updateReview(this.state.editReviewId, reivewData).then(
+                refetchRestaurantAndResetState
+            );
+        } else {
+            this.props.createReview(reivewData).then(
+                refetchRestaurantAndResetState
+            );
+        }
     }
 
     onPartySizeChange(e) {
@@ -116,10 +137,24 @@ class RestaurantShow extends React.Component {
         };
     }
 
+    onReivewEditClick(review) {
+        return e => {
+            e.preventDefault();
+            const { rating, comment } = review;  
+            this.setState({
+                openReviewInput: true,
+                rating,
+                comment,
+                editReviewId: review.id,
+            });
+            window.scrollTo(0, this.leaveReviewRef.current.offsetTop - 25);
+        };
+    }
+
     render() {
         if (!this.props.restaurant) return null; 
         const {restaurant} = this.props;
-        const {openReviewInput, rating, loadingSubmitReview, partySize, reserveDate, reserveTime, nearbyTimeslots} = this.state;
+        const {comment, openReviewInput, rating, loadingSubmitReview, partySize, reserveDate, reserveTime, nearbyTimeslots} = this.state;
         let price = null;
         switch (restaurant.price_level) {
             case 3:
@@ -158,7 +193,7 @@ class RestaurantShow extends React.Component {
                         <span>{price}</span>
                     </div>
                     <div className="restaurant-show-description">{restaurant.description}</div>
-                    <div className="restaurant-show-reviews-title">
+                    <div className="restaurant-show-reviews-title" ref={this.leaveReviewRef}>
                         {reviews.length > 0 ? `What ${reviews.length} people are saying` : 'No reviews for this restaurant'}
                     </div>
                     {openReviewInput ? 
@@ -173,7 +208,14 @@ class RestaurantShow extends React.Component {
                                     starRatedColor="red"
                                 />
                             </div>
-                            <div><textarea className="leave-reivew-input-text-area" onChange={this.onCommentChange} placeholder="Would you recommend to our friends and family?" /></div>
+                            <div>
+                                <textarea 
+                                    className="leave-reivew-input-text-area" 
+                                    onChange={this.onCommentChange} 
+                                    placeholder="Would you recommend to our friends and family?" 
+                                    value={comment}
+                                />
+                            </div>
                             <div>
                                 <button className="submit-button" onClick={this.onSubmitClick}>
                                     {loadingSubmitReview ? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> : "Submit"}
@@ -193,6 +235,12 @@ class RestaurantShow extends React.Component {
                                 <div className="profile-pic-reviews">
                                     <CgComment className="profile-pic-reviews-icon" /> {`${review.user_review_count} reivews`}
                                 </div>
+                                {
+                                    this.props.currentUserId === review.user_id 
+                                        && <div className="profile-pic-edit">
+                                                <a onClick={this.onReivewEditClick(review)}>Edit</a>
+                                           </div>
+                                }
                             </div>
                             <div>
                                 <StarRatings

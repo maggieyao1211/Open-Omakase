@@ -4,6 +4,7 @@ json.reviews do
     restaurant.reviews.each do |review|
         json.set! review.id do 
             json.id review.id
+            json.user_id review.user_id
             json.comment review.comment
             json.rating review.rating
             json.user_first_name review.user.first_name

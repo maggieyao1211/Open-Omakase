@@ -2,7 +2,6 @@ class Api::ReservationsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def create
-        sleep(1)
         @reservation = Reservation.new(reservation_params)
         if @reservation.save
             render :show
@@ -12,7 +11,6 @@ class Api::ReservationsController < ApplicationController
     end
 
     def destroy
-        sleep(1);
         reservation = Reservation.find(params[:id])
         reservation.destroy if reservation != nil
         render json: {}

@@ -19,6 +19,14 @@ export const createReview = review => {
   });
 };
 
+export const updateReview = (reviewId, review) => {
+  return $.ajax({
+    url: `/api/reviews/${reviewId}`,
+    method: 'patch',
+    data: { review },
+  });
+};
+
 export const createReservation = reservation => {
   return $.ajax({
     url: `/api/reservations/`,
