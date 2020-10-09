@@ -25,6 +25,10 @@ export const createReservation = data => dispatch => {
     return RestaurantApiUtil.createReservation(data);
 };
 
+export const updateReservation = (reservationId, data) => dispatch => {
+    return RestaurantApiUtil.updateReservation(reservationId, data);
+};
+
 export const cancelReservation = reservationId => dispatch => {
     return RestaurantApiUtil.cancelReservation(reservationId);
 };

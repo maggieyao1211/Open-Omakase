@@ -17,6 +17,12 @@ class UserShow extends React.Component {
         this.props.fetchUser(this.props.userId);
     }
 
+    onEditClick(reservation) {
+        return e => {
+            this.props.openModal(`reserveedit%-%-%${reservation.reserve_date}%-%-%${reservation.reserve_time}%-%-%${reservation.restaurant_name}%-%-%${reservation.restaurant_id}%-%-%${reservation.party_size}%-%-%${reservation.id}`);
+        };
+    }
+
     onCancelClick(reservationId) {
         return e => {
             this.setState({cancelReservationId: reservationId});
@@ -58,6 +64,7 @@ class UserShow extends React.Component {
                             </div>
                         </div>
                         <label><span>Special Notice:</span> {reservation.special_notice}</label>
+                        <span className="user-show-change-reservation" onClick={this.onEditClick(reservation)}>Edit</span>
                         <span className="user-show-change-reservation" onClick={this.onCancelClick(reservation.id)}>Cancel</span>
                     </>}
                 </div>

@@ -129,7 +129,7 @@ class RestaurantShow extends React.Component {
             const { reserveDate, partySize } = this.state;
             let modal = null;
             if (this.props.currentUserId != null) {
-                modal = `reserve%-%-%${reserveDate}%-%-%${timeslot}%-%-%${restaurant.name}%-%-%${restaurant.id}%-%-%${partySize}`;
+                modal = `reserve%-%-%${reserveDate}%-%-%${timeslot}%-%-%${restaurant.name}%-%-%${restaurant.id}%-%-%${partySize}%-%-%`;
             } else {
                 modal = 'sign_in';
             }

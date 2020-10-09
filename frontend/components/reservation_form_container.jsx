@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ReservationForm from './reservation_form';
-import { createReservation } from '../actions/restaurant_actions';
+import { createReservation, updateReservation } from '../actions/restaurant_actions';
 import { closeModal } from '../actions/modal_actions';
 
 const mapStateToProps = ({session}, ownProps) => {
@@ -11,7 +11,8 @@ const mapStateToProps = ({session}, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createReservation: restaurant => dispatch(createReservation(restaurant)),
+        createReservation: reservation => dispatch(createReservation(reservation)),
+        updateReservation: (reservationId, reservation) => dispatch(updateReservation(reservationId, reservation)),
         closeModal: modal => dispatch(closeModal(modal)),
     };
 };

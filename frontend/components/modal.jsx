@@ -2,6 +2,7 @@ import React from 'react';
 import SignInContainer from './sign_in_container';
 import SignUpContainer from './sign_up_container';
 import ReservationFormContainer from './reservation_form_container';
+import ReservationEditFormContainer from './reservation_edit_form_container';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -26,9 +27,13 @@ class Modal extends React.Component {
                 modelHeaderText = 'Sign up';
                 break;
             case 'reserve':
-                modalContent = <ReservationFormContainer date={modal[1]} time={modal[2]} restaurantName={modal[3]} restaurantId={modal[4]} partySize={modal[5]}/>;
+                modalContent = <ReservationFormContainer date={modal[1]} time={modal[2]} restaurantName={modal[3]} restaurantId={modal[4]} partySize={modal[5]} reservationId={modal[6]} />;
                 modelHeaderText = 'Your reservation almost done!'
                 break;
+            case 'reserveedit':
+                modalContent = <ReservationEditFormContainer date={modal[1]} time={modal[2]} restaurantName={modal[3]} restaurantId={modal[4]} partySize={modal[5]} reservationId={modal[6]} />;
+                modelHeaderText = 'Edit reservation'
+                break
             default:
                 modalContent = null;
                 modelHeaderText = '';

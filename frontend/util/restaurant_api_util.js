@@ -35,6 +35,14 @@ export const createReservation = reservation => {
   });
 };
 
+export const updateReservation = (reservationId, reservation) => {
+  return $.ajax({
+    url: `/api/reservations/${reservationId}`,
+    method: 'patch',
+    data: { reservation },
+  });
+};
+
 export const cancelReservation = reservationId => {
   return $.ajax({
     url: `/api/reservations/${reservationId}`,

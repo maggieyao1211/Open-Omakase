@@ -28,21 +28,33 @@ class ReservationForm extends React.Component {
             loadingConfirm: true,
         });
         e.preventDefault();
-        const { currentUserId, restaurantId, date, time, partySize } = this.props;
-        this.props.createReservation({
+        const { currentUserId, restaurantId, date, time, partySize, reservationId } = this.props;
+        const reservationData = {
             user_id: currentUserId,
             restaurant_id: restaurantId,
             reserve_date: date,
             reserve_time: time,
             party_size: partySize,
             special_notice: this.state.specialNotice,
-        }).then(reservation => {
-            this.setState({
-                redirectToUserPage: true,
-                loadingConfirm: false,
+        };
+
+        if (reservationId != null && reservationId != '') {
+            this.props.updateReservation(reservationId, reservationData).then(() => {
+                this.setState({
+                    loadingConfirm: false,
+                });
+                this.props.closeModal();
+                location.reload();
             });
-            this.props.closeModal();
-        });
+        } else {
+            this.props.createReservation(reservationData).then(() => {
+                this.setState({
+                    redirectToUserPage: true,
+                    loadingConfirm: false,
+                });
+                this.props.closeModal();
+            });
+        }
     }
 
     render() {

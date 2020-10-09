@@ -3,6 +3,7 @@ import UserShow from './user_show';
 import { fetchUser } from '../actions/user_actions';
 import { cancelReservation } from '../actions/restaurant_actions';
 import { withRouter } from "react-router-dom";
+import { openModal } from '../actions/modal_actions';
 
 const mapStateToProps = ({entities, session}, ownProps) => {
     let { userId } = ownProps.match.params;
@@ -19,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchUser: userId => dispatch(fetchUser(userId)),
         cancelReservation: reservationId => dispatch(cancelReservation(reservationId)),
+        openModal: modal => dispatch(openModal(modal)),
     };
 };
 
