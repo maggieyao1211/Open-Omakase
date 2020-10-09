@@ -31,6 +31,7 @@ class RestaurantShow extends React.Component {
         this.onFindTableClick = this.onFindTableClick.bind(this);
         this.onTimeslotClick = this.onTimeslotClick.bind(this);
         this.onReivewEditClick = this.onReivewEditClick.bind(this);
+        this.onReivewDeleteClick = this.onReivewDeleteClick.bind(this);
         this.leaveReviewRef = React.createRef()
     }
 
@@ -151,6 +152,15 @@ class RestaurantShow extends React.Component {
         };
     }
 
+    onReivewDeleteClick(reviewId) {
+        return e => {
+            e.preventDefault();
+            this.props.deleteReview(reviewId).then(() => {
+                this.props.fetchRestaurant(this.props.match.params.restaurantId);
+            });
+        };
+    }
+
     render() {
         if (!this.props.restaurant) return null; 
         const {restaurant} = this.props;
@@ -239,6 +249,7 @@ class RestaurantShow extends React.Component {
                                     this.props.currentUserId === review.user_id 
                                         && <div className="profile-pic-edit">
                                                 <a onClick={this.onReivewEditClick(review)}>Edit</a>
+                                                <a onClick={this.onReivewDeleteClick(review.id)}>Delete</a>
                                            </div>
                                 }
                             </div>

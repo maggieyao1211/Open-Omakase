@@ -88,4 +88,11 @@ html {
     text-decoration: underline;
     color: #237b98;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-pic-edit a:first-child {
+    margin-right: 8px;
 }

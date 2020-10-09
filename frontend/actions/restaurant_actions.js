@@ -21,6 +21,10 @@ export const updateReview = (reviewId, data) => dispatch => {
     return RestaurantApiUtil.updateReview(reviewId, data);
 };
 
+export const deleteReview = reviewId => dispatch => {
+    return RestaurantApiUtil.deleteReview(reviewId);
+};
+
 export const createReservation = data => dispatch => {
     return RestaurantApiUtil.createReservation(data);
 };

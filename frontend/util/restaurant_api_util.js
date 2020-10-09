@@ -27,6 +27,13 @@ export const updateReview = (reviewId, review) => {
   });
 };
 
+export const deleteReview = reviewId => {
+  return $.ajax({
+    url: `/api/reviews/${reviewId}`,
+    method: 'delete',
+  });
+};
+
 export const createReservation = reservation => {
   return $.ajax({
     url: `/api/reservations/`,
