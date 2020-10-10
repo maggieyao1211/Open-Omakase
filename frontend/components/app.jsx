@@ -7,7 +7,7 @@ import CityShowContainer from './city_show_container';
 import RestaurantIndexContainer from './restaurant_index_container';
 import RestaurantShowContainer from './restaurant_show_container';
 import UserShowContainer from './user_show_container';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const App = () => (
     <div>
@@ -27,6 +27,9 @@ const App = () => (
                 <span className="page-footer-text">inspired by OpenTable</span>
                 <a href="https://github.com/maggieyao1211" target="_blank">
                     <FaGithub className="page-footer-github" />
+                </a>
+                <a href="https://www.linkedin.com/in/maggie-y-3860641b7" target="_blank">
+                    <FaLinkedin className="page-footer-linkedin" />
                 </a>
             </footer>
         <ModalContainer />

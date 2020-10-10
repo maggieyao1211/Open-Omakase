@@ -42,6 +42,14 @@ html {
     cursor: pointer;
 }
 
+.page-footer-linkedin {
+    position: absolute;
+    top: 50%;
+    left: 57.5%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
 .page-footer a {
     text-decoration: inherit;
     color: inherit;
